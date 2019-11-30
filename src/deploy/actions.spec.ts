@@ -3,7 +3,8 @@ import {
   BuilderContext,
   BuilderRun,
   ScheduleOptions,
-  Target
+  Target,
+  BuilderOutput
 } from '@angular-devkit/architect/src/index';
 
 import deploy from './actions';
@@ -145,6 +146,25 @@ describe('Deploy Angular apps', () => {
         );
       }
     });
+
+    it('throws if app building fails', async () => {
+      context.scheduleTarget = (
+        _: Target,
+        __?: JsonObject,
+        ___?: ScheduleOptions
+      ) =>
+        Promise.resolve({
+          result: Promise.resolve(
+            createBuilderOutputMock(false, 'build error test')
+          )
+        } as BuilderRun);
+      try {
+        await deploy(mockEngine, context, getBuildTarget(), {});
+        fail();
+      } catch (e) {
+        expect(e.message).toMatch(/build error test/);
+      }
+    });
   });
 });
 
@@ -163,7 +183,9 @@ const initMocks = () => {
     workspaceRoot: 'my/workspace/root',
     logger: new logging.NullLogger() as any,
     scheduleTarget: (_: Target, __?: JsonObject, ___?: ScheduleOptions) =>
-      Promise.resolve({} as BuilderRun),
+      Promise.resolve({
+        result: Promise.resolve(createBuilderOutputMock(true, ''))
+      } as BuilderRun),
     getTargetOptions: (t: Target) =>
       Promise.resolve({
         project: `projects/${t.project}/some-file.json`,
@@ -171,6 +193,18 @@ const initMocks = () => {
         ...targetOptions
       })
   } as unknown) as BuilderContext;
+};
+
+const createBuilderOutputMock = (
+  success: boolean,
+  error: string
+): BuilderOutput => {
+  return {
+    info: { info: null },
+    error: error,
+    success: success,
+    target: {} as Target
+  };
 };
 
 const getBuildTarget = (): BuildTarget => ({
