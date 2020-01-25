@@ -1,5 +1,8 @@
 import { logging } from '@angular-devkit/core';
-import exec from './utils/exec-async';
+import * as path from 'path';
+
+import * as fs from './utils/fs-async';
+import { execAsync } from './utils/exec-async';
 
 import { Schema } from '../deploy/schema';
 import { defaults } from './defaults';
@@ -10,22 +13,29 @@ export async function run(
   logger: logging.LoggerApi
 ) {
   try {
-    options = exports.prepareOptions(options, logger);
+    options = prepareOptions(options, logger);
 
-    const commandToPublish = `npm publish ${dir} ${exports.getOptionsString(
-      options
+    // If we are not on dry run
+    if (options.packageVersion && !options.dryRun) {
+      await setPackageVersion(dir, options);
+    }
+
+    const npmOptions = extractOnlyNPMOptions(options);
+    const commandToPublish = `npm publish ${dir} ${getOptionsString(
+      npmOptions
     )}`;
-    const { stdout, stderr } = await exec(commandToPublish);
+
+    const { stdout, stderr } = await execAsync(commandToPublish);
 
     logger.info(stdout);
     logger.info(stderr);
 
     if (options.dryRun) {
-      await logger.info('The options are:');
-      await logger.info(JSON.stringify(options, null, 1));
+      logger.info('The options are:');
+      logger.info(JSON.stringify(options, null, 1));
     }
 
-    await logger.info(
+    logger.info(
       '🚀 Successfully published via ngx-deploy-npm! Have a nice day!'
     );
   } catch (error) {
@@ -34,7 +44,38 @@ export async function run(
   }
 }
 
-export function prepareOptions(origOptions: Schema, logger: logging.LoggerApi) {
+async function setPackageVersion(dir: string, options: Schema) {
+  let packageContent: string = await fs.readFileAsync(
+    path.join(dir, 'package.json'),
+    { encoding: 'utf8' }
+  );
+
+  let packageObj: any = JSON.parse(packageContent);
+
+  packageObj.version = options.packageVersion;
+
+  await fs.writeFileAsync(
+    path.join(dir, 'package.json'),
+    JSON.stringify(packageObj, null, 4),
+    { encoding: 'utf8' }
+  );
+}
+
+/**
+ * Extract only the options that the `npm publish` command can process
+ *
+ * @param param0 All the options sent to ng deploy
+ */
+function extractOnlyNPMOptions({ access, tag, otp, dryRun }: Schema) {
+  return {
+    access,
+    tag,
+    otp,
+    dryRun
+  };
+}
+
+function prepareOptions(origOptions: Schema, logger: logging.LoggerApi) {
   const options = {
     ...defaults,
     ...origOptions
@@ -47,7 +88,7 @@ export function prepareOptions(origOptions: Schema, logger: logging.LoggerApi) {
   return options;
 }
 
-export function getOptionsString(options: Schema) {
+function getOptionsString(options: Schema) {
   return (
     Object.keys(options)
       // Get only options with value
