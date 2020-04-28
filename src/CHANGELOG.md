@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.2.0...v1.2.1) (2020-04-28)
+
+
+### Bug Fixes
+
+* improve library checking ([aec3d05](https://github.com/bikecoders/ngx-deploy-npm/commit/aec3d05))
+
+
+### Documentation
+
+* fix the content table ([d3e33b1](https://github.com/bikecoders/ngx-deploy-npm/commit/d3e33b1))
+
 ## [1.2.0](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.1.1...v1.2.0) (2020-01-25)
 
 ### Documentation
