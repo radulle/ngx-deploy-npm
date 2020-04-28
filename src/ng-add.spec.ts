@@ -49,7 +49,7 @@ describe('ng-add', () => {
           prefix: 'myworkspace',
           architect: {
             build: {
-              builder: '@angular-devkit/build-ng-packagr:build',
+              builder: 'my-custom-builder',
               a: 'a',
               b: 'b'
             }

@@ -11,22 +11,28 @@
 
 **Table of contents:**
 
-- [⚠️ Prerequisites](#prerequisites)
-- [🚀 Quick Start (local development)](#quick-start)
-- [🚀 Continuous Delivery](#continuous-delivery)
-  - [CircleCI](#circleci)
-- [📦 Options](#options)
-  - [--configuration](#--configuration)
-  - [--package-version](#--package-version)
-  - [--tag](#--tag)
-  - [--access](#--access)
-  - [--otp](#--otp)
-  - [--dry-run](#--dry-run)
-- [📁 Configuration File](#configuration-file)
-- [🧐 Essential considerations](#essential-considerations)
-- [🏁 Next milestones](#next-milestones)
-- [License](#license)
-- [🚀 Powered By ngx-deploy-starter](#-powered-by-ngx-deploy-starter)
+- [ngx-deploy-npm 🚀](#ngx-deploy-npm-%f0%9f%9a%80)
+    - [**Deploy your Angular Package to NPM directly from the Angular CLI! 🚀**](#deploy-your-angular-package-to-npm-directly-from-the-angular-cli-%f0%9f%9a%80)
+  - [⚠️ Prerequisites <a name="prerequisites"></a>](#%e2%9a%a0%ef%b8%8f-prerequisites)
+  - [🚀 Quick Start (local development) <a name="quick-start"></a>](#%f0%9f%9a%80-quick-start-local-development)
+  - [🚀 Continuous Delivery <a name="continuous-delivery"></a>](#%f0%9f%9a%80-continuous-delivery)
+    - [CircleCI](#circleci)
+          - [You can check the steps suggested in the CircleCI's guide](#you-can-check-the-steps-suggested-in-the-circlecis-guide)
+  - [📦 Options <a name="options"></a>](#%f0%9f%93%a6-options)
+      - [--configuration](#configuration)
+      - [--package-version](#package-version)
+      - [--tag](#tag)
+      - [--access](#access)
+      - [--otp](#otp)
+      - [--dry-run](#dry-run)
+  - [📁 Configuration File <a name="configuration-file"></a>](#%f0%9f%93%81-configuration-file)
+  - [🧐 Essential considerations <a name="essential-considerations"></a>](#%f0%9f%a7%90-essential-considerations)
+    - [README, LICENCE, and CHANGELOG](#readme-licence-and-changelog)
+    - [Version bumping](#version-bumping)
+    - [Only publishable libraries are being configured](#only-publishable-libraries-are-being-configured)
+  - [🏁 Next milestones <a name="next-milestones"></a>](#%f0%9f%8f%81-next-milestones)
+  - [License <a name="license"></a>](#license)
+  - [🚀 Powered By ngx-deploy-starter](#%f0%9f%9a%80-powered-by-ngx-deploy-starter)
 
 ---
 
@@ -205,7 +211,7 @@ This deployer doesn't bump or generates a new version of the package, it just bu
 
 ### Only publishable libraries are being configured
 
-A publishable library is one that can be built. Here we detect that if the library in the `angular.json` has the architect **build** with the builder `@angular-devkit/build-ng-packagr:build`.
+A publishable library is one that can be built. Here we detect that if the library in the `angular.json` has the architect **build**.
 
 The `angular.json` look like
 
@@ -218,7 +224,7 @@ The `angular.json` look like
     "prefix": "myworkspace",
     "architect": {
       "build": {
-        "builder": "@angular-devkit/build-ng-packagr:build",
+        "builder": "any-builder-of-your-preference",
         "options": {
           "tsConfig": "libs/publishable-library/tsconfig.lib.json",
           "project": "libs/publishable-library/ng-package.json"
