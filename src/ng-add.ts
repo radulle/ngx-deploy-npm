@@ -3,8 +3,6 @@ import { experimental, JsonParseMode, parseJson } from '@angular-devkit/core';
 
 import { npmAccess } from './engine/defaults';
 
-const publishableLibBuilder = '@angular-devkit/build-ng-packagr:build';
-
 function getWorkspace(
   host: Tree
 ): { path: string; workspace: experimental.workspace.WorkspaceSchema } {
@@ -75,8 +73,7 @@ function getLibraries({
         proj =>
           proj.projectType === 'library' &&
           proj.architect &&
-          proj.architect.build &&
-          proj.architect.build.builder === publishableLibBuilder
+          proj.architect.build
       )
   );
 }
