@@ -100,10 +100,9 @@ jobs:
 
 - **optional**
 - Alias: `-c`
-- Default: `production` (string)
+- Default: Doesn't have any default value (string)
 - Example:
-  - `ng deploy` – Angular project is build in production mode
-  - `ng deploy --configuration=test` – Angular project is using the configuration `test` (this configuration must exist in the `angular.json` file)
+  - `ng deploy --configuration=production` – The configuration `production` is being used to build your package
 
 A named build target, as specified in the `configurations` section of `angular.json`.
 Each named target is accompanied by a configuration of option defaults for that target.
@@ -112,7 +111,7 @@ Same as `ng build --configuration=XXX`.
 #### --package-version
 
 - **optional**
-- Default: Doesn't have any default value [string]
+- Default: Doesn't have any default value (string)
 - Example:
   - `ng deploy --package-version 2.3.4`
 
