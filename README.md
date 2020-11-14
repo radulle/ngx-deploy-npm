@@ -1,7 +1,15 @@
 # ngx-deploy-npm 🚀
 
 [![NPM version][npm-image]][npm-url]
-[![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?color=blue&style=flat-square)](http://opensource.org/licenses/MIT)
+[![The MIT License][mit-licence-image]][mit-licence-url]
+[![Discord Server][discord-image]][discord-url]
+
+[npm-url]: https://www.npmjs.com/package/ngx-deploy-npm
+[npm-image]: https://badge.fury.io/js/ngx-deploy-npm.svg
+[mit-licence-image]: https://img.shields.io/badge/license-MIT-orange.svg?color=blue&style=flat-square
+[mit-licence-url]: http://opensource.org/licenses/MIT
+[discord-image]: https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23ngx-deploy-npm&logo=discord&logoColor=white&style=flat-square
+[discord-url]: https://discord.com/invite/XrzEC6K
 
 ### **Deploy your Angular Package to NPM directly from the Angular CLI! 🚀**
 
@@ -251,6 +259,3 @@ We look forward to any help. PRs are welcome! 😃
 Code released under the [MIT license](LICENSE).
 
 ## 🚀 Powered By [ngx-deploy-starter](https://github.com/angular-schule/ngx-deploy-starter)
-
-[npm-url]: https://www.npmjs.com/package/ngx-deploy-npm
-[npm-image]: https://badge.fury.io/js/ngx-deploy-npm.svg
