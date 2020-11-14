@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.3](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.2.2...v1.2.3) (2020-11-14)
+
+
+### Documentation
+
+* add discord server ([6f3b57c](https://github.com/bikecoders/ngx-deploy-npm/commit/6f3b57c))
+
 ### [1.2.2](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.2.1...v1.2.2) (2020-04-29)
 
 
