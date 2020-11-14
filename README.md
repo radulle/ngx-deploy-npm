@@ -9,7 +9,7 @@
 [mit-licence-image]: https://img.shields.io/badge/license-MIT-orange.svg?color=blue&style=flat-square
 [mit-licence-url]: http://opensource.org/licenses/MIT
 [discord-image]: https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23ngx-deploy-npm&logo=discord&logoColor=white&style=flat-square
-[discord-url]: https://discord.com/invite/XrzEC6K
+[discord-url]: https://discord.gg/cPa78y6rXn
 
 ### **Deploy your Angular Package to NPM directly from the Angular CLI! 🚀**
 
