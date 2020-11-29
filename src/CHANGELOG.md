@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.2.4...v1.3.0) (2020-11-29)
+
+
+### Features
+
+* adds --no-build option to skip build ([743e4d4](https://github.com/bikecoders/ngx-deploy-npm/commit/743e4d4)), closes [angular-schule/ngx-deploy-starter#1](https://github.com/angular-schule/ngx-deploy-starter/issues/1)
+
 ### [1.2.4](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.2.3...v1.2.4) (2020-11-14)
 
 
