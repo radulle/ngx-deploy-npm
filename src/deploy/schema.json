@@ -3,6 +3,16 @@
   "title": "schema",
   "description": "Publish your angular packages to npm by just run `npm deploy your-packages`",
   "properties": {
+    "configuration": {
+      "type": "string",
+      "description": "This is a proposal from RFC #1. --- A named build target, as specified in the `configurations` section of angular.json. Each named target is accompanied by a configuration of option defaults for that target. Same as `ng build --configuration=XXX`.",
+      "alias": "c"
+    },
+    "noBuild": {
+      "type": "boolean",
+      "default": false,
+      "description": "This is a proposal from RFC #1. --- Skip build process during deployment."
+    },
     "packageVersion": {
       "type": "string",
       "description": "The version that your package is going to be published. Ex: '1.3.5' '2.0.0-next.0'"
@@ -24,10 +34,6 @@
       "type": "boolean",
       "description": "For testing: Run through without making any changes. Execute with --dry-run and nothing will happen.",
       "default": false
-    },
-    "configuration": {
-      "type": "string",
-      "description": "This is a proposal from RFC #1. --- A named build target, as specified in the `configurations` section of angular.json. Each named target is accompanied by a configuration of option defaults for that target. Same as `ng build --configuration=XXX`."
     }
   }
 }
