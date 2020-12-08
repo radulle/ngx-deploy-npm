@@ -5,9 +5,9 @@ import * as engine from './engine';
 import { Schema } from '../deploy/schema';
 import { npmAccess } from './defaults';
 
-import * as exec from './utils/exec-async';
+import * as exec from '../utils/exec-async';
 
-import * as fs from './utils/fs-async';
+import * as fs from '../utils/fs-async';
 import { PromiseWithChild } from 'child_process';
 
 describe('engine', () => {

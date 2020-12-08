@@ -5,15 +5,42 @@ import {
   ScheduleOptions,
   Target
 } from '@angular-devkit/architect/src/index';
+
 import deploy from './actions';
+import { BuildTarget } from 'interfaces';
+import * as path from 'path';
 
-let context: BuilderContext;
-const mockEngine = { run: (_: string, __: any, __2: any) => Promise.resolve() };
+import { readFileAsync } from '../utils';
+jest.mock('../utils');
 
+const mockEngine = {
+  run: (_: string, __: any, __2: any) => Promise.resolve()
+};
 const PROJECT = 'pirojok-project';
 
+let context: BuilderContext;
+let mockedReadFileAsync: jest.Mock<ReturnType<typeof readFileAsync>>;
+let ngPackageContent: JsonObject;
+
 describe('Deploy Angular apps', () => {
-  beforeEach(() => initMocks());
+  beforeEach(() => {
+    ngPackageContent = {
+      dest: `../../dist/randomness/${PROJECT}`
+    };
+
+    mockedReadFileAsync = readFileAsync as jest.Mock<
+      ReturnType<typeof readFileAsync>
+    >;
+    mockedReadFileAsync.mockImplementation(() =>
+      Promise.resolve(JSON.stringify(ngPackageContent, null, 2))
+    );
+
+    initMocks();
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
   describe('Builder', () => {
     let spy: jest.SpyInstance;
@@ -23,7 +50,7 @@ describe('Deploy Angular apps', () => {
     });
 
     it('should invoke the builder', async () => {
-      await deploy(mockEngine, context, 'host', {});
+      await deploy(mockEngine, context, getBuildTarget(), {});
 
       expect(spy).toHaveBeenCalledWith({
         target: 'build',
@@ -34,7 +61,7 @@ describe('Deploy Angular apps', () => {
     it('should invoke the builder with the right configuration', async () => {
       const customConf = 'my-custom-conf';
 
-      await deploy(mockEngine, context, 'host', {
+      await deploy(mockEngine, context, getBuildTarget(), {
         configuration: customConf
       });
 
@@ -47,27 +74,45 @@ describe('Deploy Angular apps', () => {
   });
 
   it('should invoke engine.run', async () => {
-    const spy = spyOn(mockEngine, 'run').and.callThrough();
-    await deploy(mockEngine, context, 'host', {});
+    const expectedOutputDir = path.join(
+      context.workspaceRoot,
+      `dist/randomness/${PROJECT}`
+    );
+    const runSpy = spyOn(mockEngine, 'run').and.callThrough();
 
-    expect(spy).toHaveBeenCalledWith('host', {}, context.logger);
+    await deploy(mockEngine, context, getBuildTarget(), {});
+
+    expect(runSpy).toHaveBeenCalledWith(expectedOutputDir, {}, context.logger);
   });
 
   describe('error handling', () => {
-    it('throws if there is no target project', async () => {
+    it('should throw if there is no target project', async () => {
       context.target = undefined;
       try {
-        await deploy(mockEngine, context, 'host', {});
+        await deploy(mockEngine, context, getBuildTarget(), {});
         fail();
       } catch (e) {
         expect(e.message).toMatch(/Cannot execute the build target/);
+      }
+    });
+
+    it('should throw if there is not project on build options', async () => {
+      context.getTargetOptions = () => Promise.resolve({});
+
+      try {
+        await deploy(mockEngine, context, getBuildTarget(), {});
+        fail();
+      } catch (e) {
+        expect(e.message).toMatch(
+          /Cannot read the project path option of the Angular library '.*' in angular.json/
+        );
       }
     });
   });
 });
 
 const initMocks = () => {
-  context = {
+  context = ({
     target: {
       configuration: 'production',
       project: PROJECT,
@@ -78,21 +123,18 @@ const initMocks = () => {
       description: 'mock',
       optionSchema: false
     },
-    currentDirectory: 'cwd',
-    id: 1,
+    workspaceRoot: 'my/workspace/root',
     logger: new logging.NullLogger() as any,
-    workspaceRoot: 'cwd',
-    addTeardown: _ => {},
-    validateOptions: _ => Promise.resolve({} as any),
-    getBuilderNameForTarget: () => Promise.resolve(''),
-    analytics: null as any,
-    getTargetOptions: (_: Target) => Promise.resolve({}),
-    reportProgress: (_: number, __?: number, ___?: string) => {},
-    reportStatus: (_: string) => {},
-    reportRunning: () => {},
-    scheduleBuilder: (_: string, __?: JsonObject, ___?: ScheduleOptions) =>
-      Promise.resolve({} as BuilderRun),
     scheduleTarget: (_: Target, __?: JsonObject, ___?: ScheduleOptions) =>
-      Promise.resolve({} as BuilderRun)
-  };
+      Promise.resolve({} as BuilderRun),
+    getTargetOptions: (t: Target) =>
+      Promise.resolve({
+        project: `projects/${t.project}/some-file.json`,
+        target: t.target
+      })
+  } as unknown) as BuilderContext;
 };
+
+const getBuildTarget = (): BuildTarget => ({
+  name: `${PROJECT}:build:production`
+});

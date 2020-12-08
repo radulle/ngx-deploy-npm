@@ -4,7 +4,8 @@
   "description": "Publish your angular packages to npm by just run `npm deploy your-packages`",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && json2ts deploy/schema.json > deploy/schema.d.ts && tsc && copyfiles README.md LICENSE builders.json collection.json package.json ngx-deploy-npm deploy/schema.json dist",
+    "prebuild": "rimraf dist && copyfiles README.md LICENSE builders.json collection.json package.json ngx-deploy-npm deploy/schema.json dist && json2ts deploy/schema.json > deploy/schema.d.ts",
+    "build": "tsc -p tsconfig.build.json",
     "predeploy": "npm run build",
     "deploy": "cd dist && npm publish --access public && cd ..",
     "link": "npm run build && cd dist && npm link && cd ..",
@@ -44,9 +45,9 @@
   },
   "homepage": "https://github.com/bikecoders/ngx-deploy-npm/#readme",
   "devDependencies": {
-    "@angular-devkit/architect": "^0.803.0",
-    "@angular-devkit/core": "^8.3.0",
-    "@angular-devkit/schematics": "^8.3.0",
+    "@angular-devkit/architect": "^0.1100.0",
+    "@angular-devkit/core": "^11.0.0",
+    "@angular-devkit/schematics": "^11.0.0",
     "@types/jest": "^24.0.18",
     "@types/node": "^12.6.9",
     "copyfiles": "^2.4.1",

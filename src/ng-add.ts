@@ -1,11 +1,10 @@
+import { JsonParseMode, parseJson } from '@angular-devkit/core';
 import { SchematicsException, Tree } from '@angular-devkit/schematics';
-import { experimental, JsonParseMode, parseJson } from '@angular-devkit/core';
 
 import { npmAccess } from './engine/defaults';
+import { Workspace, WorkspaceProject } from 'interfaces';
 
-function getWorkspace(
-  host: Tree
-): { path: string; workspace: experimental.workspace.WorkspaceSchema } {
+function getWorkspace(host: Tree): { path: string; workspace: Workspace } {
   const possibleFiles = ['/angular.json', '/.angular.json'];
   const path = possibleFiles.filter(path => host.exists(path))[0];
 
@@ -15,12 +14,9 @@ function getWorkspace(
   }
   const content = configBuffer.toString();
 
-  let workspace: experimental.workspace.WorkspaceSchema;
+  let workspace: Workspace;
   try {
-    workspace = (parseJson(
-      content,
-      JsonParseMode.Loose
-    ) as {}) as experimental.workspace.WorkspaceSchema;
+    workspace = (parseJson(content, JsonParseMode.Loose) as {}) as Workspace;
   } catch (e) {
     throw new SchematicsException(`Could not parse angular.json: ` + e.message);
   }
@@ -43,7 +39,7 @@ export const ngAdd = () => (tree: Tree) => {
   }
 
   libraries.forEach(lib => {
-    /* istanbul ignore else  */
+    /* istanbul ignore else */
     if (lib.architect) {
       lib.architect['deploy'] = {
         builder: 'ngx-deploy-npm:deploy',
@@ -62,9 +58,7 @@ export const ngAdd = () => (tree: Tree) => {
  * Get the libraries present in the workspace
  * @param workspace
  */
-function getLibraries({
-  projects
-}: experimental.workspace.WorkspaceSchema): experimental.workspace.WorkspaceProject[] {
+function getLibraries({ projects }: Workspace): WorkspaceProject[] {
   return (
     Object.keys(projects)
       .map(projectKey => projects[projectKey])
