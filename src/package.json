@@ -54,7 +54,7 @@
     "jest": "^24.8.0",
     "json-schema-to-typescript": "^7.0.0",
     "rimraf": "^2.6.3",
-    "standard-version": "^7.0.0",
+    "standard-version": "^8.0.1",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.3"
   },
