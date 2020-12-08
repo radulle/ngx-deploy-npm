@@ -1,8 +1,8 @@
-import { logging } from '@angular-devkit/core';
+import { JsonObject, logging } from '@angular-devkit/core';
 import * as path from 'path';
 
-import * as fs from './utils/fs-async';
-import { execAsync } from './utils/exec-async';
+import * as fs from '../utils/fs-async';
+import { execAsync } from '../utils/exec-async';
 
 import { Schema } from '../deploy/schema';
 import { defaults } from './defaults';
@@ -17,7 +17,7 @@ export async function run(
 
     // If we are not on dry run
     if (options.packageVersion && !options.dryRun) {
-      await setPackageVersion(dir, options);
+      await setPackageVersion(dir, options.packageVersion);
     }
 
     const npmOptions = extractOnlyNPMOptions(options);
@@ -44,15 +44,15 @@ export async function run(
   }
 }
 
-async function setPackageVersion(dir: string, options: Schema) {
-  let packageContent: string = await fs.readFileAsync(
+async function setPackageVersion(dir: string, packageVersion: string) {
+  const packageContent: string = await fs.readFileAsync(
     path.join(dir, 'package.json'),
     { encoding: 'utf8' }
   );
 
-  let packageObj: any = JSON.parse(packageContent);
+  const packageObj: JsonObject = JSON.parse(packageContent);
 
-  packageObj.version = options.packageVersion;
+  packageObj.version = packageVersion;
 
   await fs.writeFileAsync(
     path.join(dir, 'package.json'),

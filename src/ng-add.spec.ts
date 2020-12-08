@@ -1,86 +1,66 @@
 import { Tree } from '@angular-devkit/schematics';
-import { experimental } from '@angular-devkit/core';
 
 import { ngAdd } from './ng-add';
+import { Workspace } from 'interfaces';
 
 describe('ng-add', () => {
-  let originalAngularJSON: experimental.workspace.WorkspaceSchema;
-  let expectedAngularJSON: experimental.workspace.WorkspaceSchema;
+  let originalAngularJSON: Workspace;
+  let expectedAngularJSON: Workspace;
 
   beforeEach(() => {
     originalAngularJSON = {
-      version: 1,
       projects: {
         testing: {
           projectType: 'application',
-          schematics: {
-            '@nrwl/angular:component': {
-              style: 'scss'
-            }
-          },
-          root: 'apps/testing',
-          sourceRoot: 'apps/testing/src',
-          prefix: 'myworkspace',
           architect: {
             build: {
-              a: 'a',
-              b: 'b'
+              builder: 'a',
+              options: { b: 'b' }
             }
           }
         },
         publishable: {
           projectType: 'library',
-          root: 'libs/publishable',
-          sourceRoot: 'libs/publishable/src',
-          prefix: 'myworkspace',
           architect: {
             build: {
               builder: '@angular-devkit/build-ng-packagr:build',
-              a: 'a',
-              b: 'b'
+              options: { a: 'a', b: 'b' }
             }
-          },
-          schematics: {}
+          }
         },
         publishable2: {
           projectType: 'library',
-          root: 'libs/publishable',
-          sourceRoot: 'libs/publishable/src',
-          prefix: 'myworkspace',
           architect: {
             build: {
               builder: 'my-custom-builder',
-              a: 'a',
-              b: 'b'
+              options: {
+                a: 'a',
+                b: 'b'
+              }
             }
-          },
-          schematics: {}
+          }
         },
         'non-publishable': {
           projectType: 'library',
-          root: 'libs/non-publishable',
-          sourceRoot: 'libs/non-publishable/src',
-          prefix: 'myworkspace',
           architect: {
             lint: {
-              a: 'a',
-              b: 'b'
+              builder: 'a',
+              options: {
+                b: 'b'
+              }
             }
-          },
-          schematics: {}
+          }
         },
         'non-publishable2': {
           projectType: 'library',
-          root: 'libs/non-publishable',
-          sourceRoot: 'libs/non-publishable/src',
-          prefix: 'myworkspace',
           architect: {
             lint: {
-              a: 'a',
-              b: 'b'
+              builder: 'a',
+              options: {
+                b: 'b'
+              }
             }
-          },
-          schematics: {}
+          }
         }
       },
       defaultProject: 'testing'
