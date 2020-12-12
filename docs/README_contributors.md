@@ -1,4 +1,21 @@
-# README for contributors
+# README for contributors <!-- omit in toc -->
+
+## Table of content  <!-- omit in toc -->
+
+- [How to start](#how-to-start)
+- [Local development](#local-development)
+  - [1. Angular CLI](#1-angular-cli)
+  - [2. npm link](#2-npm-link)
+  - [3. Adding to an Angular project --ng-add](#3-adding-to-an-angular-project---ng-add)
+  - [4. Testing](#4-testing)
+  - [5. Debugging](#5-debugging)
+    - [Option A), the traditional one](#option-a-the-traditional-one)
+    - [Option B), the easy one](#option-b-the-easy-one)
+- [Making a Contribution](#making-a-contribution)
+- [Creating a Workspace to test your library](#creating-a-workspace-to-test-your-library)
+  - [Nx](#nx)
+  - [Angular](#angular)
+- [Publish to NPM](#publish-to-npm)
 
 ## How to start
 
@@ -60,7 +77,7 @@ Use the following instructions to make `ngx-deploy-npm` available locally via `n
 
 Read more about the `link` feature in the [official NPM documentation](https://docs.npmjs.com/cli/link).
 
-### 3. Adding to an Angular project -- ng add
+### 3. Adding to an Angular project --ng-add
 
 Once you have completed the previous steps to `npm link` the local copy of `ngx-deploy-npm`, follow these steps to use it in a local Angular project.
 
@@ -103,8 +120,42 @@ To run the tests:
 
 ```sh
 cd ./src
-npm test
+npm run test
+npm run test:cov
 ```
+
+### 5. Debugging
+
+There are two ways of debug:
+
+#### Option A), the traditional one
+
+To debug your builder you need to:
+
+1. Place `debugger` statement, where you want your deployer stops.
+2. Follow the steps of [npm link](#2-npm-link) described here. compile, link and install linked in a local project
+3. Now, on the project that you linked the deployer, run it on debug mode using:
+    | Normal Command         | Command on Debug Mode                                                     |
+    | :--------------------- | :------------------------------------------------------------------------ |
+    | `ng deploy`            | `node --inspect-brk ./node_modules/@angular/cli/bin/ng deploy`            |
+    | `ng add YOUR_DEPLOYER` | `node --inspect-brk ./node_modules/@angular/cli/bin/ng add YOUR_DEPLOYER` |
+
+4. Use your favorite [Inspector Client](https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients) to debug
+
+> This is the standard procedure to debug a NodeJs project. If you need more information you can read the official Docs of NodeJs to learn more about it.
+>
+> _[https://nodejs.org/de/docs/guides/debugging-getting-started/](https://nodejs.org/de/docs/guides/debugging-getting-started/)_
+
+#### Option B), the easy one
+
+> Only works on VsCode!
+
+First do:
+
+1. Place `debugger` statement or a red-point, where you want your deployer stops.
+2. Follow the steps of [npm link](#2-npm-link) described here. compile, link and install linked in a local project
+
+On VsCode, just create a [_JavaScript Debug Terminal_](https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_javascript-debug-terminal) and execute the command that you want to debug
 
 ## Making a Contribution
 
