@@ -1,5 +1,9 @@
 import { JsonParseMode, parseJson } from '@angular-devkit/core';
-import { SchematicsException, Tree } from '@angular-devkit/schematics';
+import {
+  SchematicsException,
+  Tree,
+  SchematicContext
+} from '@angular-devkit/schematics';
 
 import { npmAccess } from './engine/defaults';
 import { Workspace, WorkspaceProject } from 'interfaces';
@@ -27,8 +31,12 @@ function getWorkspace(host: Tree): { path: string; workspace: Workspace } {
   };
 }
 
-// TODO, specify which library set the deployer
-export const ngAdd = () => (tree: Tree) => {
+interface INgAddOptions {}
+
+export const ngAdd = (options?: INgAddOptions) => (
+  tree: Tree,
+  _context: SchematicContext
+) => {
   const { path: workspacePath, workspace } = getWorkspace(tree);
 
   const libraries = getLibraries(workspace);

@@ -4,7 +4,7 @@
   "description": "Publish your angular packages to npm by just run `ng deploy`",
   "main": "index.js",
   "scripts": {
-    "prebuild": "rimraf dist && copyfiles README.md LICENSE builders.json collection.json package.json ngx-deploy-npm deploy/schema.json dist && json2ts deploy/schema.json > deploy/schema.d.ts",
+    "prebuild": "rimraf dist && copyfiles README.md LICENSE builders.json collection.json ng-add-schema.json package.json ngx-deploy-npm deploy/schema.json dist && json2ts deploy/schema.json > deploy/schema.d.ts",
     "build": "tsc -p tsconfig.build.json",
     "predeploy": "npm run build",
     "deploy": "cd dist && npm publish --access public && cd ..",
