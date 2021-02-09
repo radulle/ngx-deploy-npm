@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.3](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.3.2...v1.3.3) (2021-02-09)
+
+
+### Bug Fixes
+
+* add options to ngAdd schematic ([3570ac3](https://github.com/bikecoders/ngx-deploy-npm/commit/3570ac333d82473b3b7b55ebaf133f108dbc0ed7))
+
+
+### Documentation
+
+* improve documentation for contributors ([70dce30](https://github.com/bikecoders/ngx-deploy-npm/commit/70dce30a287f7f665897a4c71afc51c04ad95450))
+
 ### [1.3.2](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.3.1...v1.3.2) (2020-12-09)
 
 
