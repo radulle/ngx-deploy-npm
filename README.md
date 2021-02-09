@@ -34,6 +34,7 @@
 - [📁 Configuration File](#configuration-file)
 - [🧐 Essential considerations](#essential-considerations)
 - [🏁 Next milestones](#next-milestones)
+- [🎉 Do you Want to Contribute?](#want-to-contribute)
 - [License](#license)
 - [🚀 Powered By ngx-deploy-starter](#-powered-by-ngx-deploy-starter)
 
@@ -268,6 +269,12 @@ We are looking forward to the following features:
 Your feature that's not on the list yet?
 
 We look forward to any help. PRs are welcome! 😃
+
+## 🎉 Do you Want to Contribute? <a name="want-to-contribute"></a>
+
+We create a special document for you to give you through this path
+
+[Readme for Contributors](./docs/README_contributors.md)
 
 ## License <a name="license"></a>
 
