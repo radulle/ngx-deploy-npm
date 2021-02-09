@@ -9,6 +9,7 @@
     "predeploy": "npm run build",
     "deploy": "cd dist && npm publish --access public && cd ..",
     "link": "npm run build && cd dist && npm link && cd ..",
+    "unlink": "cd dist && npm unlink && cd ..",
     "test": "jest",
     "test:debug": "node --inspect-brk=0.0.0.0 node_modules/.bin/jest --runInBand",
     "release": "standard-version"
