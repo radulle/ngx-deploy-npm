@@ -1,4 +1,4 @@
-import { Tree } from '@angular-devkit/schematics';
+import { Tree, SchematicContext } from '@angular-devkit/schematics';
 
 import { ngAdd } from './ng-add';
 import { Workspace } from 'interfaces';
@@ -94,7 +94,7 @@ describe('ng-add', () => {
     });
 
     it('should set the deployer only on publishable libraries', () => {
-      const result = ngAdd()(tree);
+      const result = ngAdd()(tree, {} as SchematicContext);
 
       const angularJsonModified = JSON.parse(
         result.read('angular.json')!.toString()
@@ -106,7 +106,7 @@ describe('ng-add', () => {
 
   describe('error handling', () => {
     it('Should throw if angular.json not found', () => {
-      expect(() => ngAdd()(Tree.empty())).toThrowError(
+      expect(() => ngAdd()(Tree.empty(), {} as SchematicContext)).toThrowError(
         'Could not find angular.json'
       );
     });
@@ -114,11 +114,13 @@ describe('ng-add', () => {
     it('Should throw if angular.json can not be parsed', () => {
       const tree = Tree.empty();
       tree.create('angular.json', 'hi');
-      expect(() => ngAdd()(tree)).toThrowError('Could not parse angular.json');
+      expect(() => ngAdd()(tree, {} as SchematicContext)).toThrowError(
+        'Could not parse angular.json'
+      );
     });
 
     it('Should throw if angular.json can not be parsed', () => {
-      expect(() => ngAdd()(Tree.empty())).toThrowError(
+      expect(() => ngAdd()(Tree.empty(), {} as SchematicContext)).toThrowError(
         'Could not find angular.json'
       );
     });
@@ -139,9 +141,9 @@ describe('ng-add', () => {
         JSON.stringify(originalAngularJSON)
       );
 
-      expect(() => ngAdd()(treeWithoutLibs)).toThrowError(
-        'There is no libraries to add this deployer'
-      );
+      expect(() =>
+        ngAdd()(treeWithoutLibs, {} as SchematicContext)
+      ).toThrowError('There is no libraries to add this deployer');
     });
   });
 });
