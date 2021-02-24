@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.1](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.3.3...v1.4.1) (2021-02-18)
+
+
+### Features
+
+*  support Nx workspace ([15fc88a](https://github.com/bikecoders/ngx-deploy-npm/commit/15fc88a48cb6214960223157ab672bdb1c638701))
+
 ### [1.3.3](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.3.2...v1.3.3) (2021-02-09)
 
 
