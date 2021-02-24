@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.4.1...v1.4.2) (2021-02-24)
+
+
+### Documentation
+
+* reduce cover image size on disk ([b44737f](https://github.com/bikecoders/ngx-deploy-npm/commit/b44737fbfed8a0200bff70b0fec090f9a80471ea))
+
 ## [1.4.1](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.3.3...v1.4.1) (2021-02-18)
 
 
