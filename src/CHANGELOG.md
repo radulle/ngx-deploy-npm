@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.3](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.4.2...v1.4.3) (2021-02-27)
+
+
+### Bug Fixes
+
+* throws an error if app building fails ([072290a](https://github.com/bikecoders/ngx-deploy-npm/commit/072290a130e4b1dff5637515c8d2e29e38e4307a))
+
 ### [1.4.2](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.4.1...v1.4.2) (2021-02-24)
 
 
