@@ -24,7 +24,7 @@ describe('engine', () => {
       () =>
         Promise.resolve({
           stdout: 'package published',
-          stderr: undefined
+          stderr: undefined,
         }) as PromiseWithChild<any>
     );
   });
@@ -40,7 +40,7 @@ describe('engine', () => {
       tag: 'next',
       otp: 'someValue',
       configuration: 'stageConfig',
-      dryRun: true
+      dryRun: true,
     };
     const optionsOnCMD = `--access ${options.access} --tag ${options.tag} --otp ${options.otp} --dry-run ${options.dryRun}`;
 
@@ -92,7 +92,7 @@ describe('engine', () => {
       const options: Schema = {
         otp: 'random-text',
         dryRun: true,
-        tag: 'random-tag'
+        tag: 'random-tag',
       };
       const optionsOnCMD = `--access public --tag ${options.tag} --otp ${options.otp} --dry-run true`;
 
@@ -111,7 +111,7 @@ describe('engine', () => {
       const options = {
         dryRun: true,
         tag: 'random-tag',
-        access: npmAccess.restricted
+        access: npmAccess.restricted,
       };
       const optionsOnCMD = `--access ${npmAccess.restricted} --tag ${options.tag} --dry-run true`;
 
@@ -155,16 +155,16 @@ describe('engine', () => {
         version: 'boilerPlate',
         description:
           'Publish your angular packages to npm by just run `ng deploy`',
-        main: 'index.js'
+        main: 'index.js',
       };
 
       expectedPackage = {
         ...myPackageJSON,
-        version
+        version,
       };
 
       options = {
-        packageVersion: version
+        packageVersion: version,
       };
     });
 

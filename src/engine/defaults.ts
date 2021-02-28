@@ -7,12 +7,12 @@ export type NpmPublishOptions = Pick<
 
 export enum npmAccess {
   public = 'public',
-  restricted = 'restricted'
+  restricted = 'restricted',
 }
 
 export const defaults: NpmPublishOptions = {
   tag: undefined,
   access: npmAccess.public,
   otp: undefined,
-  dryRun: false
+  dryRun: false,
 };

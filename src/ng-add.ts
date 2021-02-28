@@ -2,7 +2,7 @@ import { JsonParseMode, parseJson } from '@angular-devkit/core';
 import {
   SchematicsException,
   Tree,
-  SchematicContext
+  SchematicContext,
 } from '@angular-devkit/schematics';
 
 import { npmAccess } from './engine/defaults';
@@ -22,12 +22,14 @@ function getWorkspace(host: Tree): { path: string; workspace: Workspace } {
   try {
     workspace = (parseJson(content, JsonParseMode.Loose) as {}) as Workspace;
   } catch (e) {
-    throw new SchematicsException(`Could not parse workspace definition: ` + e.message);
+    throw new SchematicsException(
+      `Could not parse workspace definition: ` + e.message
+    );
   }
 
   return {
     path,
-    workspace
+    workspace,
   };
 }
 
@@ -52,8 +54,8 @@ export const ngAdd = (options?: INgAddOptions) => (
       lib.architect['deploy'] = {
         builder: 'ngx-deploy-npm:deploy',
         options: {
-          access: npmAccess.public
-        }
+          access: npmAccess.public,
+        },
       };
     }
   });

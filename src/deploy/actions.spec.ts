@@ -4,7 +4,7 @@ import {
   BuilderRun,
   ScheduleOptions,
   Target,
-  BuilderOutput
+  BuilderOutput,
 } from '@angular-devkit/architect/src/index';
 
 import deploy from './actions';
@@ -15,7 +15,7 @@ import { readFileAsync } from '../utils';
 jest.mock('../utils');
 
 const mockEngine = {
-  run: (_: string, __: any, __2: any) => Promise.resolve()
+  run: (_: string, __: any, __2: any) => Promise.resolve(),
 };
 const PROJECT = 'pirojok-project';
 
@@ -31,7 +31,7 @@ describe('Deploy Angular apps', () => {
 
   beforeEach(() => {
     ngPackageContent = {
-      dest: `../../dist/randomness/${PROJECT}`
+      dest: `../../dist/randomness/${PROJECT}`,
     };
 
     mockedReadFileAsync = readFileAsync as jest.Mock<
@@ -60,7 +60,7 @@ describe('Deploy Angular apps', () => {
 
       expect(spy).toHaveBeenCalledWith({
         target: 'build',
-        project: PROJECT
+        project: PROJECT,
       });
     });
 
@@ -68,13 +68,13 @@ describe('Deploy Angular apps', () => {
       const customConf = 'my-custom-conf';
 
       await deploy(mockEngine, context, getBuildTarget(), {
-        configuration: customConf
+        configuration: customConf,
       });
 
       expect(spy).toHaveBeenCalledWith({
         target: 'build',
         project: PROJECT,
-        configuration: customConf
+        configuration: customConf,
       });
     });
   });
@@ -83,7 +83,7 @@ describe('Deploy Angular apps', () => {
     describe('With Output Path', () => {
       beforeEach(() => {
         targetOptions = {
-          outputPath: 'some/dist/path'
+          outputPath: 'some/dist/path',
         };
       });
 
@@ -156,7 +156,7 @@ describe('Deploy Angular apps', () => {
         Promise.resolve({
           result: Promise.resolve(
             createBuilderOutputMock(false, 'build error test')
-          )
+          ),
         } as BuilderRun);
       try {
         await deploy(mockEngine, context, getBuildTarget(), {});
@@ -173,25 +173,25 @@ const initMocks = () => {
     target: {
       configuration: 'production',
       project: PROJECT,
-      target: 'foo'
+      target: 'foo',
     },
     builder: {
       builderName: 'mock',
       description: 'mock',
-      optionSchema: false
+      optionSchema: false,
     },
     workspaceRoot: 'my/workspace/root',
     logger: new logging.NullLogger() as any,
     scheduleTarget: (_: Target, __?: JsonObject, ___?: ScheduleOptions) =>
       Promise.resolve({
-        result: Promise.resolve(createBuilderOutputMock(true, ''))
+        result: Promise.resolve(createBuilderOutputMock(true, '')),
       } as BuilderRun),
     getTargetOptions: (t: Target) =>
       Promise.resolve({
         project: `projects/${t.project}/some-file.json`,
         target: t.target,
-        ...targetOptions
-      })
+        ...targetOptions,
+      }),
   } as unknown) as BuilderContext;
 };
 
@@ -203,10 +203,10 @@ const createBuilderOutputMock = (
     info: { info: null },
     error: error,
     success: success,
-    target: {} as Target
+    target: {} as Target,
   };
 };
 
 const getBuildTarget = (): BuildTarget => ({
-  name: `${PROJECT}:build:production`
+  name: `${PROJECT}:build:production`,
 });

@@ -15,18 +15,18 @@ describe('ng-add', () => {
           architect: {
             build: {
               builder: 'a',
-              options: { b: 'b' }
-            }
-          }
+              options: { b: 'b' },
+            },
+          },
         },
         publishable: {
           projectType: 'library',
           architect: {
             build: {
               builder: '@angular-devkit/build-ng-packagr:build',
-              options: { a: 'a', b: 'b' }
-            }
-          }
+              options: { a: 'a', b: 'b' },
+            },
+          },
         },
         publishable2: {
           projectType: 'library',
@@ -35,10 +35,10 @@ describe('ng-add', () => {
               builder: 'my-custom-builder',
               options: {
                 a: 'a',
-                b: 'b'
-              }
-            }
-          }
+                b: 'b',
+              },
+            },
+          },
         },
         'non-publishable': {
           projectType: 'library',
@@ -46,10 +46,10 @@ describe('ng-add', () => {
             lint: {
               builder: 'a',
               options: {
-                b: 'b'
-              }
-            }
-          }
+                b: 'b',
+              },
+            },
+          },
         },
         'non-publishable2': {
           projectType: 'library',
@@ -57,13 +57,13 @@ describe('ng-add', () => {
             lint: {
               builder: 'a',
               options: {
-                b: 'b'
-              }
-            }
-          }
-        }
+                b: 'b',
+              },
+            },
+          },
+        },
       },
-      defaultProject: 'testing'
+      defaultProject: 'testing',
     };
 
     expectedWorkspaceDefinition = JSON.parse(
@@ -80,8 +80,8 @@ describe('ng-add', () => {
           project.architect.deploy = {
             builder: 'ngx-deploy-npm:deploy',
             options: {
-              access: 'public'
-            }
+              access: 'public',
+            },
           };
         }
       });
