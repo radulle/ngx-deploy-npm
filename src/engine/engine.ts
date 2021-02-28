@@ -70,13 +70,13 @@ function extractOnlyNPMOptions({
   access,
   tag,
   otp,
-  dryRun
+  dryRun,
 }: Schema): NpmPublishOptions {
   return {
     access,
     tag,
     otp,
-    dryRun
+    dryRun,
   };
 }
 
@@ -86,7 +86,7 @@ function prepareOptions(
 ): Schema {
   const options = {
     ...defaults,
-    ...origOptions
+    ...origOptions,
   };
 
   if (options.dryRun) {
@@ -104,7 +104,7 @@ function getOptionsString(options: NpmPublishOptions) {
       // to CMD option
       .map(optKey => ({
         cmdOptions: `--${toKebabCase(optKey)}`,
-        value: options[optKey]
+        value: options[optKey],
       }))
       // to string
       .map(

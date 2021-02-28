@@ -1,7 +1,7 @@
 import {
   BuilderContext,
   Target,
-  targetFromTargetString
+  targetFromTargetString,
 } from '@angular-devkit/architect';
 import { JsonObject, logging } from '@angular-devkit/core';
 
@@ -40,7 +40,7 @@ export default async function deploy(
 
     const target = {
       target: 'build',
-      project: context.target.project
+      project: context.target.project,
     } as Target;
 
     // Set the configuration if set on the options
@@ -109,7 +109,7 @@ async function getOutPutPath(
 
     try {
       ngPackageContentStr = await readFileAsync(ngPackagePath, {
-        encoding: 'utf8'
+        encoding: 'utf8',
       });
     } catch (error) {
       throw new Error(`Error reading the ng-package.json`);
