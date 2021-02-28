@@ -1,11 +1,11 @@
 # README for contributors <!-- omit in toc -->
 
-## Table of content  <!-- omit in toc -->
+## Table of content <!-- omit in toc -->
 
 - [How to start](#how-to-start)
 - [Local development](#local-development)
   - [1. Angular CLI](#1-angular-cli)
-  - [2. npm link](#2-npm-link)
+  - [2. yarn link](#2-yarn-link)
   - [3. Adding to an Angular project --ng-add](#3-adding-to-an-angular-project---ng-add)
   - [4. Testing](#4-testing)
   - [5. Debugging](#5-debugging)
@@ -51,9 +51,9 @@ Follow the instructions for [checking and updating the Angular CLI version](#ang
    ng update @angular/cli @angular/core
    ```
 
-### 2. npm link
+### 2. yarn link
 
-Use the following instructions to make `ngx-deploy-npm` available locally via `npm link`.
+Use the following instructions to make `ngx-deploy-npm` available locally via `yarn link`.
 
 1. Clone the project
 
@@ -66,20 +66,20 @@ Use the following instructions to make `ngx-deploy-npm` available locally via `n
 
    ```sh
    cd src
-   npm install
+   yarn install
    ```
 
 3. Create a local version of the package:
 
    ```sh
-   npm run link
+   yarn run link
    ```
 
 Read more about the `link` feature in the [official NPM documentation](https://docs.npmjs.com/cli/link).
 
 ### 3. Adding to an Angular project --ng-add
 
-Once you have completed the previous steps to `npm link` the local copy of `ngx-deploy-npm`, follow these steps to use it in a local Angular project.
+Once you have completed the previous steps to `yarn link` the local copy of `ngx-deploy-npm`, follow these steps to use it in a local Angular project.
 
 1. Enter the project directory
 
@@ -90,7 +90,7 @@ Once you have completed the previous steps to `npm link` the local copy of `ngx-
 2. Add the local version of `ngx-deploy-npm`.
 
    ```sh
-   npm link ngx-deploy-npm
+   yarn link ngx-deploy-npm
    ```
 
 3. Now execute the `ng-add` schematic.
@@ -133,12 +133,12 @@ There are two ways of debug:
 To debug your builder you need to:
 
 1. Place `debugger` statement, where you want your deployer stops.
-2. Follow the steps of [npm link](#2-npm-link) described here. compile, link and install linked in a local project
+2. Follow the steps of [yarn run link](#2-**yarn-link)\*\* described here. compile, link and install linked in a local project
 3. Now, on the project that you linked the deployer, run it on debug mode using:
-    | Normal Command         | Command on Debug Mode                                                     |
-    | :--------------------- | :------------------------------------------------------------------------ |
-    | `ng deploy`            | `node --inspect-brk ./node_modules/@angular/cli/bin/ng deploy`            |
-    | `ng add YOUR_DEPLOYER` | `node --inspect-brk ./node_modules/@angular/cli/bin/ng add YOUR_DEPLOYER` |
+   | Normal Command | Command on Debug Mode |
+   | :--------------------- | :------------------------------------------------------------------------ |
+   | `ng deploy` | `node --inspect-brk ./node_modules/@angular/cli/bin/ng deploy` |
+   | `ng add YOUR_DEPLOYER` | `node --inspect-brk ./node_modules/@angular/cli/bin/ng add YOUR_DEPLOYER` |
 
 4. Use your favorite [Inspector Client](https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients) to debug
 
@@ -153,7 +153,7 @@ To debug your builder you need to:
 First do:
 
 1. Place `debugger` statement or a red-point, where you want your deployer stops.
-2. Follow the steps of [npm link](#2-npm-link) described here. compile, link and install linked in a local project
+2. Follow the steps of [yarn link](#2-yarn-link) described here. compile, link and install linked in a local project
 
 On VsCode, just create a [_JavaScript Debug Terminal_](https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_javascript-debug-terminal) and execute the command that you want to debug
 
@@ -200,6 +200,6 @@ and test your flaming changes 🔥
 
 ```sh
 cd src
-npm release # to create a new version
-npm deploy
+yarn release # to create a new version
+yarn deploy
 ```
