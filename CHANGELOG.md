@@ -2,92 +2,89 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [1.4.3](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.4.2...v1.4.3) (2021-02-27)
+## [1.5.0](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.4.3...v1.5.0) (2021-02-28)
 
+### Features
+
+- add production build target on ng-add if exists ([3959732](https://github.com/bikecoders/ngx-deploy-npm/commit/39597328f4768692bf76cd1561ecea7af58e0a22))
+
+### Documentation
+
+- add debugging instructions ([311d730](https://github.com/bikecoders/ngx-deploy-npm/commit/311d7308c301ff3d57fa8a6c90185633b91e4892))
+
+### [1.4.3](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.4.2...v1.4.3) (2021-02-27)
 
 ### Bug Fixes
 
-* throws an error if app building fails ([072290a](https://github.com/bikecoders/ngx-deploy-npm/commit/072290a130e4b1dff5637515c8d2e29e38e4307a))
+- throws an error if app building fails ([072290a](https://github.com/bikecoders/ngx-deploy-npm/commit/072290a130e4b1dff5637515c8d2e29e38e4307a))
 
 ### [1.4.2](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.4.1...v1.4.2) (2021-02-24)
 
-
 ### Documentation
 
-* reduce cover image size on disk ([b44737f](https://github.com/bikecoders/ngx-deploy-npm/commit/b44737fbfed8a0200bff70b0fec090f9a80471ea))
+- reduce cover image size on disk ([b44737f](https://github.com/bikecoders/ngx-deploy-npm/commit/b44737fbfed8a0200bff70b0fec090f9a80471ea))
 
 ## [1.4.1](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.3.3...v1.4.1) (2021-02-18)
 
-
 ### Features
 
-*  support Nx workspace ([15fc88a](https://github.com/bikecoders/ngx-deploy-npm/commit/15fc88a48cb6214960223157ab672bdb1c638701))
+- support Nx workspace ([15fc88a](https://github.com/bikecoders/ngx-deploy-npm/commit/15fc88a48cb6214960223157ab672bdb1c638701))
 
 ### [1.3.3](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.3.2...v1.3.3) (2021-02-09)
 
-
 ### Bug Fixes
 
-* add options to ngAdd schematic ([3570ac3](https://github.com/bikecoders/ngx-deploy-npm/commit/3570ac333d82473b3b7b55ebaf133f108dbc0ed7))
-
+- add options to ngAdd schematic ([3570ac3](https://github.com/bikecoders/ngx-deploy-npm/commit/3570ac333d82473b3b7b55ebaf133f108dbc0ed7))
 
 ### Documentation
 
-* improve documentation for contributors ([70dce30](https://github.com/bikecoders/ngx-deploy-npm/commit/70dce30a287f7f665897a4c71afc51c04ad95450))
+- improve documentation for contributors ([70dce30](https://github.com/bikecoders/ngx-deploy-npm/commit/70dce30a287f7f665897a4c71afc51c04ad95450))
 
 ### [1.3.2](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.3.1...v1.3.2) (2020-12-09)
 
-
 ### Documentation
 
-* improve builder description ([d0515d1](https://github.com/bikecoders/ngx-deploy-npm/commit/d0515d1))
+- improve builder description ([d0515d1](https://github.com/bikecoders/ngx-deploy-npm/commit/d0515d1))
 
 ### [1.3.1](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.3.0...v1.3.1) (2020-12-08)
 
-
 ### Bug Fixes
 
-* add support for AngularV11 ([a188ae2](https://github.com/bikecoders/ngx-deploy-npm/commit/a188ae2))
+- add support for AngularV11 ([a188ae2](https://github.com/bikecoders/ngx-deploy-npm/commit/a188ae2))
 
 ## [1.3.0](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.2.4...v1.3.0) (2020-11-29)
 
-
 ### Features
 
-* adds --no-build option to skip build ([743e4d4](https://github.com/bikecoders/ngx-deploy-npm/commit/743e4d4)), closes [angular-schule/ngx-deploy-starter#1](https://github.com/angular-schule/ngx-deploy-starter/issues/1)
+- adds --no-build option to skip build ([743e4d4](https://github.com/bikecoders/ngx-deploy-npm/commit/743e4d4)), closes [angular-schule/ngx-deploy-starter#1](https://github.com/angular-schule/ngx-deploy-starter/issues/1)
 
 ### [1.2.4](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.2.3...v1.2.4) (2020-11-14)
 
-
 ### Documentation
 
-* fix discord URL ([2b75305](https://github.com/bikecoders/ngx-deploy-npm/commit/2b75305))
+- fix discord URL ([2b75305](https://github.com/bikecoders/ngx-deploy-npm/commit/2b75305))
 
 ### [1.2.3](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.2.2...v1.2.3) (2020-11-14)
 
-
 ### Documentation
 
-* add discord server ([6f3b57c](https://github.com/bikecoders/ngx-deploy-npm/commit/6f3b57c))
+- add discord server ([6f3b57c](https://github.com/bikecoders/ngx-deploy-npm/commit/6f3b57c))
 
 ### [1.2.2](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.2.1...v1.2.2) (2020-04-29)
 
-
 ### Documentation
 
-* fix a typo on the documention ([845daea](https://github.com/bikecoders/ngx-deploy-npm/commit/845daea))
+- fix a typo on the documention ([845daea](https://github.com/bikecoders/ngx-deploy-npm/commit/845daea))
 
 ### [1.2.1](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.2.0...v1.2.1) (2020-04-28)
 
-
 ### Bug Fixes
 
-* improve library checking ([aec3d05](https://github.com/bikecoders/ngx-deploy-npm/commit/aec3d05))
-
+- improve library checking ([aec3d05](https://github.com/bikecoders/ngx-deploy-npm/commit/aec3d05))
 
 ### Documentation
 
-* fix the content table ([d3e33b1](https://github.com/bikecoders/ngx-deploy-npm/commit/d3e33b1))
+- fix the content table ([d3e33b1](https://github.com/bikecoders/ngx-deploy-npm/commit/d3e33b1))
 
 ## [1.2.0](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.1.1...v1.2.0) (2020-01-25)
 
