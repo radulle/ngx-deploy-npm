@@ -7,6 +7,7 @@ import {
 
 import { npmAccess } from './engine/defaults';
 import { Workspace, WorkspaceProject } from 'interfaces';
+import { Schema } from 'deploy/schema';
 
 function getWorkspace(host: Tree): { path: string; workspace: Workspace } {
   const possibleFiles = ['/angular.json', '/.angular.json', '/workspace.json'];
@@ -55,6 +56,7 @@ export const ngAdd = (options?: INgAddOptions) => (
         builder: 'ngx-deploy-npm:deploy',
         options: {
           access: npmAccess.public,
+          ...setUpProductionModeIfHasIt(lib),
         },
       };
     }
@@ -73,11 +75,20 @@ function getLibraries({ projects }: Workspace): WorkspaceProject[] {
     Object.keys(projects)
       .map(projectKey => projects[projectKey])
       // Check if the library is a publishable library (nx compatibility)
-      .filter(
-        proj =>
-          proj.projectType === 'library' &&
-          proj.architect &&
-          proj.architect.build
-      )
+      .filter(proj => proj.projectType === 'library' && proj.architect?.build)
   );
+}
+
+/**
+ * Returns the configuration production if the library has a production mode on its build
+ * @param lib The workspace of the library
+ */
+function setUpProductionModeIfHasIt(
+  lib: WorkspaceProject
+): Pick<Schema, 'configuration'> {
+  return lib.architect?.build?.configurations?.production
+    ? {
+        configuration: 'production',
+      }
+    : {};
 }

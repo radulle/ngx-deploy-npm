@@ -2,7 +2,11 @@ export interface WorkspaceProject {
   projectType?: string;
   architect?: Record<
     string,
-    { builder: string; options?: Record<string, any> }
+    {
+      builder: string;
+      options?: Record<string, any>;
+      configurations?: Record<string, Record<string, any>>;
+    }
   >;
 }
 
