@@ -120,6 +120,26 @@ describe('ng-add', () => {
 
       expect(workspaceJsonModified).toEqual(expectedWorkspaceDefinition);
     });
+
+    it('should set production on the libraries that can be compiled to production', () => {
+      const productionConfig = {
+        production: {
+          someConfig: true,
+        },
+      };
+      originalWorkspaceDefinition.projects.publishable.architect!.build.configurations = productionConfig;
+      expectedWorkspaceDefinition.projects.publishable.architect!.build.configurations = productionConfig;
+      expectedWorkspaceDefinition.projects.publishable.architect!.deploy.options!.configuration =
+        'production';
+      tree.create('angular.json', JSON.stringify(originalWorkspaceDefinition));
+
+      const result = ngAdd()(tree, {} as SchematicContext);
+      const workspaceJsonModified = JSON.parse(
+        result.read('angular.json')!.toString()
+      );
+
+      expect(workspaceJsonModified).toEqual(expectedWorkspaceDefinition);
+    });
   });
 
   describe('error handling', () => {
