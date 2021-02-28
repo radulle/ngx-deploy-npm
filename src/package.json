@@ -17,7 +17,9 @@
     "test": "jest",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk=0.0.0.0 node_modules/.bin/jest --runInBand",
-    "release": "standard-version --infile ../CHANGELOG.md"
+    "release": "standard-version --infile ../CHANGELOG.md",
+    "create-workspace:angular": "../tools/create-workspace-angular.sh",
+    "create-workspace:nx": "../tools/create-workspace-nx.sh"
   },
   "schematics": "./collection.json",
   "builders": "./builders.json",

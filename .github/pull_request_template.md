@@ -1,11 +1,14 @@
 ## PR Checklist
+
 Please check if your PR fulfills the following requirements:
 
 - [ ] The commit message follows our guidelines: https://www.conventionalcommits.org/en/v1.0.0/
-- [ ] Tests for the changes have been added (for bug fixes / features)
-- [ ] Docs have been added / updated (for bug fixes / features)
+- [ ] Tests for the changes have been added (for bug fixes/features)
+- [ ] Docs have been added/updated (for bug fixes/features)
+- [ ] Both workspaces were tested Angular an Nx
 
 ## PR Type
+
 What kind of change does this PR introduce?
 
 <!-- Please check the one that applies to this PR using "x". -->
@@ -19,6 +22,7 @@ What kind of change does this PR introduce?
 - [ ] Other... Please describe:
 
 ## What is the current behavior?
+
 <!-- Please describe the current behavior that you are modifying or link to a relevant issue. -->
 
 Issue Number: N/A
