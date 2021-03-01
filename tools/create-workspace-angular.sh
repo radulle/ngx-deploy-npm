@@ -2,6 +2,9 @@
 
 cd ../..
 
+mkdir -p workspace
+cd workspace
+
 # Delete the previous workspace
 rm -Rif angular-workspace
 

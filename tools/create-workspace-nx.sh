@@ -2,6 +2,9 @@
 
 cd ../..
 
+mkdir -p workspace
+cd workspace
+
 # Delete the previous workspace
 rm -Rif nx-workspace
 
@@ -14,6 +17,8 @@ npm install -D @nrwl/angular \
   @nrwl/nest \
   @nrwl/react \
   @nrwl/node
+
+npm i @nestjs/common
 
 # Generate all kind of libs
 npx nx generate @nrwl/angular:lib --name angular-lib --publishable --importPath angular-lib --style scss &&
