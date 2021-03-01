@@ -173,66 +173,28 @@ Questions 🤔? Drop your message on our [discord server](https://discord.gg/cPa
 
 ## Creating a Workspace to test your library
 
-You may want to test your changes in a real life scenario so
-there is some scripts that you can execute to create your workspace
+You may want to test your changes in a real life scenario.
+We have some scripts that you can execute to create your workspace
+and test your flaming changes 🔥
+
+> The creation of a new workspace will delete the previous one
 
 ### Nx
 
-```sh
-# Generate the Workspace
-npm init nx-workspace nx-workspace --preset empty --nx-cloud false
-cd nx-workspace
+`yarn run create-workspace:nx` will create a `nx-workspace` folder with a Nx workspace with
+4 publishable libraries to make your test on whatever lib you want
 
-# Install some deps
-npm install -D @nrwl/angular && \
-npm install -D @nrwl/nest && \
-npm install -D @nrwl/react && \
-npm install -D @nrwl/node
-
-# Generate all kind of libs
-npx nx generate @nrwl/angular:lib --name angular-lib --publishable --importPath angular-lib --style scss && \
-npx nx generate @nrwl/react:lib --name react-lib --publishable --importPath react-lib --style scss && \
-npx nx generate @nrwl/nest:lib --name nest-lib --publishable --importPath nest-lib && \
-npx nx generate @nrwl/node:lib --name node-lib --publishable --importPath node-lib
-
-# Save your changes to easily differ the changes made on the workspace.json
-git add . && git commit -m "chore: create boiler plate"
-
-# Link the project
-npm link ngx-deploy-npm
-
-# Add it to the workspace
-npx nx generate ngx-deploy-npm:ng-add
-
-# Test the build
-npx nx deploy react-lib --dry-run
-npx nx deploy angular-lib --dry-run
-npx nx deploy nest-lib --dry-run
-npx nx deploy node-lib --dry-run
-```
+- react-lib
+- angular-lib
+- nest-lib
+- node-lib
 
 ### Angular
 
-```sh
-# Generate the Workspace
-npx @angular/cli new --name angular-workspace --strict --routing --style scss
-cd angular-workspace
+`yarn run create-workspace:angular` will create a `angular-workspace` folder with an Angular workspace with
+1 publishable libraries to make your test
 
-# Generate lib
-npx ng generate library angular-lib
-
-# Save your changes to easily differ the changes made on the angular.json
-git add . && git commit -m "chore: create boiler plate"
-
-# Link the project
-npm link ngx-deploy-npm
-
-# Add it to the workspace
-npx ng add ngx-deploy-npm
-
-# Test the build
-npx ng deploy angular-lib --dry-run
-```
+- angular-lib
 
 ## Publish to NPM
 
