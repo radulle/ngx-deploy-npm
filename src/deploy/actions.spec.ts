@@ -59,6 +59,7 @@ describe('Deploy Angular apps', () => {
       await deploy(mockEngine, context, getBuildTarget(), {});
 
       expect(spy).toHaveBeenCalledWith({
+        configuration: 'production',
         target: 'build',
         project: PROJECT,
       });
@@ -67,8 +68,8 @@ describe('Deploy Angular apps', () => {
     it('should invoke the builder with the right configuration', async () => {
       const customConf = 'my-custom-conf';
 
-      await deploy(mockEngine, context, getBuildTarget(), {
-        configuration: customConf,
+      await deploy(mockEngine, context, getBuildTarget(customConf), {
+        buildTarget: customConf,
       });
 
       expect(spy).toHaveBeenCalledWith({
@@ -207,6 +208,6 @@ const createBuilderOutputMock = (
   };
 };
 
-const getBuildTarget = (): BuildTarget => ({
-  name: `${PROJECT}:build:production`,
+const getBuildTarget = (customConf: string = 'production'): BuildTarget => ({
+  name: `${PROJECT}:build:${customConf}`,
 });

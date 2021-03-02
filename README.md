@@ -7,12 +7,14 @@
 [![Discord Server][discord-image]][discord-url]
 
 <!-- Images -->
+
 [npm-image]: https://badge.fury.io/js/ngx-deploy-npm.svg
 [mit-licence-image]: https://img.shields.io/badge/license-MIT-orange.svg?color=blue&style=flat-square
 [conventional-commits-image]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg
 [discord-image]: https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23ngx-deploy-npm&logo=discord&logoColor=white&style=flat-square
 
 <!-- URLs -->
+
 [npm-url]: https://www.npmjs.com/package/ngx-deploy-npm
 [mit-licence-url]: http://opensource.org/licenses/MIT
 [discord-url]: https://discord.gg/cPa78y6rXn
@@ -30,7 +32,7 @@
 - [🚀 Continuous Delivery](#continuous-delivery)
   - [CircleCI](#circleci)
 - [📦 Options](#options)
-  - [--configuration](#--configuration)
+  - [--build-target](#--build-target)
   - [--no-build](#--no-build)
   - [--package-version](#--package-version)
   - [--tag](#--tag)
@@ -46,8 +48,10 @@
 
 ---
 
-> Note: all the examples are focused on Angular, if you don't see an
-> explicit command for an Nx workspace just change `ng` for `nx`
+> **Note:** all the examples are focused on Angular, if you don't see an
+> explicit command for an Nx workspace just change `ng` for `nx`.
+>
+> Also, you may find references to `angular.json`, if you are in a Nx workspace you can change it for `workspace.json`
 
 ## 🚀 Quick Start (local development) <a name="quick-start"></a>
 
@@ -56,7 +60,7 @@ package created and you already are logged in on npm using `npm login`
 
 1. Add `ngx-deploy-npm` to your project. It will configure all your publishable libraries present in the project
 
-   | Angular🅰️                                    | Nx🐬                                                    |
+   | Angular🅰️                                    | Nx🐬                                                   |
    | :------------------------------------------- | :----------------------------------------------------- |
    | <pre lang="sh"> ng add ngx-deploy-npm </pre> | <pre lang="sh"> nx generate ngx-deploy-npm:init </pre> |
 
@@ -88,16 +92,18 @@ Independently of the CI/CD that you are using you must create an NPM token. To d
    - Creating a step with `run: npm whoami`
    - The output should be the username of your npm account
 4. **Deploy your package**
+
    - Create a step with:
 
-   | Angular🅰️                                     | Nx🐬                                           |
+   | Angular🅰️                                     | Nx🐬                                          |
    | :-------------------------------------------- | :-------------------------------------------- |
    | <pre lang="sh"> ng deploy your-library </pre> | <pre lang="sh"> nx deploy your-library </pre> |
 
    - **NOTE:** You may want to execute a script that executes some pre-steps
-    before publishing and inside that script execute`ng/nx deploy YOUR_LIBRARY`.
-    If you want to make that script on JavaScript and put it on the package.json,
-    **execute it using `npm` not with yarn**, there is an [issue](https://github.com/yarnpkg/yarn/issues/5683) associated with that
+     before publishing and inside that script execute`ng/nx deploy YOUR_LIBRARY`.
+     If you want to make that script on JavaScript and put it on the package.json,
+     **execute it using `npm` not with yarn**, there is an [issue](https://github.com/yarnpkg/yarn/issues/5683) associated with that
+
 5. **Enjoy your just released package 🎉📦**
 
 The job full example is for an Angular project is
@@ -120,20 +126,21 @@ jobs:
 
 ## 📦 Options <a name="options"></a>
 
-#### --configuration
+#### --build-target
 
 - **optional**
-- Alias: `-c`
 - Default: Doesn't have any default value (string)
 - Example:
-  - `ng deploy --configuration=production` – The configuration `production` is being used to build your package
+  - `ng deploy --build-target=production` – The configuration `production` is being used to build your package
 
-A named build target, as specified in the `configurations` section of `angular.json`.
-Each named target is accompanied by a configuration of option defaults for that target.
-Same as `ng build --configuration=XXX`.
+The `buildTarget` simply points to an existing build configuration for your project,
+as specified in the `configurations` section of `angular.json`.
+
+This is equivalent to calling the command `ng build --configuration=XXX`.
 This command has no effect if the option `--no-build` option is active.
 
 #### --no-build
+
 - **optional**
 - Default: `false` (string)
 - Example:
@@ -142,7 +149,7 @@ This command has no effect if the option `--no-build` option is active.
 
 Skip build process during deployment.
 This can be used when you are sure that you haven't changed anything and want to deploy with the latest artifact.
-This command causes the `--configuration` setting to have no effect.
+This command causes the `--build-target` setting to have no effect.
 
 #### --package-version
 
@@ -191,13 +198,13 @@ For testing: Run through without making any changes. Execute with --dry-run and 
 ## 📁 Configuration File <a name="configuration-file"></a>
 
 To avoid all these command-line cmd options, you can write down your
-configuration in the `angular.json` or `workspace.json` file in the `options` attribute
+configuration in the `angular.json` file in the `options` attribute
 of your deploy project's architect.
 Just change the kebab-case to lower camel case.
 This is the notation of all options in lower camel case:
 
 - access
-- configuration
+- buildTarget
 - dryRun
 - packageVersion
 - otp
@@ -224,7 +231,7 @@ becomes
 }
 ```
 
-And just run `ng deploy YOUR-LIBRARY` 😄.
+Now you can just run `ng deploy YOUR-LIBRARY` without all the options in the command line! 😄
 
 > ℹ️ You can always use the [--dry-run](#dry-run) option to verify if your configuration is right.
 

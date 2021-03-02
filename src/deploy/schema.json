@@ -3,15 +3,14 @@
   "title": "schema",
   "description": "Publish your angular packages to npm by just run `ng deploy`",
   "properties": {
-    "configuration": {
+    "buildTarget": {
       "type": "string",
-      "description": "This is a proposal from RFC #1. --- A named build target, as specified in the `configurations` section of angular.json. Each named target is accompanied by a configuration of option defaults for that target. Same as `ng build --configuration=XXX`.",
-      "alias": "c"
+      "description": "A named build target, as specified in the `configurations` section of workspace/angular.json. Each named target is accompanied by a configuration of option defaults for that target. This is equivalent to calling the command `[nx|ng] build --configuration=XXX`."
     },
     "noBuild": {
       "type": "boolean",
       "default": false,
-      "description": "This is a proposal from RFC #1. --- Skip build process during deployment."
+      "description": "Skip build process during deployment."
     },
     "packageVersion": {
       "type": "string",

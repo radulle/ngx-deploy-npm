@@ -85,10 +85,10 @@ function getLibraries({ projects }: Workspace): WorkspaceProject[] {
  */
 function setUpProductionModeIfHasIt(
   lib: WorkspaceProject
-): Pick<Schema, 'configuration'> {
+): Pick<Schema, 'buildTarget'> {
   return lib.architect?.build?.configurations?.production
     ? {
-        configuration: 'production',
+        buildTarget: 'production',
       }
     : {};
 }

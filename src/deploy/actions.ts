@@ -30,25 +30,12 @@ export default async function deploy(
       throw new Error('Cannot execute the build target');
     }
 
-    const configuration = options.configuration;
+    context.logger.info(`📦 Building "${context.target.project}"`);
+    context.logger.info(`📦 Build target "${buildTarget.name}"`);
 
-    context.logger.info(
-      `📦 Building "${context.target.project}". ${
-        configuration ? `Configuration "${configuration}"` : ''
-      }`
+    const build = await context.scheduleTarget(
+      targetFromTargetString(buildTarget.name)
     );
-
-    const target = {
-      target: 'build',
-      project: context.target.project,
-    } as Target;
-
-    // Set the configuration if set on the options
-    if (configuration) {
-      target.configuration = configuration;
-    }
-
-    const build = await context.scheduleTarget(target);
     const buildResult = await build.result;
 
     if (!buildResult.success) {
@@ -56,8 +43,9 @@ export default async function deploy(
     }
   }
 
-  const targetFromStr = targetFromTargetString(buildTarget.name);
-  const buildOptions = await context.getTargetOptions(targetFromStr);
+  const buildOptions = await context.getTargetOptions(
+    targetFromTargetString(buildTarget.name)
+  );
 
   const outputPath = await getOutPutPath(
     context.workspaceRoot,

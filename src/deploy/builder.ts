@@ -16,9 +16,7 @@ export default createBuilder(
       throw new Error('Cannot deploy the application without a target');
     }
 
-    const configuration = options.configuration
-      ? `:${options.configuration}`
-      : '';
+    const configuration = options.buildTarget ? `:${options.buildTarget}` : '';
     const buildTarget = {
       name: `${context.target.project}:build${configuration}`,
     };
