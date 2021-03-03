@@ -7,12 +7,14 @@
 [![Discord Server][discord-image]][discord-url]
 
 <!-- Images -->
+
 [npm-image]: https://badge.fury.io/js/ngx-deploy-npm.svg
 [mit-licence-image]: https://img.shields.io/badge/license-MIT-orange.svg?color=blue&style=flat-square
 [conventional-commits-image]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg
 [discord-image]: https://img.shields.io/discord/748677963142135818?color=7289DA&label=%23ngx-deploy-npm&logo=discord&logoColor=white&style=flat-square
 
 <!-- URLs -->
+
 [npm-url]: https://www.npmjs.com/package/ngx-deploy-npm
 [mit-licence-url]: http://opensource.org/licenses/MIT
 [discord-url]: https://discord.gg/cPa78y6rXn
@@ -20,7 +22,7 @@
 
 ![Cover Image](docs/cover.png)
 
-## Publish any kind of library to NPM on an Angular🅰️ or Nx🐬 Workspace
+## Publish your libraries to NPM with one command on an Angular🅰️ or Nx🐬 workspace
 
 ---
 
@@ -56,7 +58,7 @@ package created and you already are logged in on npm using `npm login`
 
 1. Add `ngx-deploy-npm` to your project. It will configure all your publishable libraries present in the project
 
-   | Angular🅰️                                    | Nx🐬                                                    |
+   | Angular🅰️                                    | Nx🐬                                                   |
    | :------------------------------------------- | :----------------------------------------------------- |
    | <pre lang="sh"> ng add ngx-deploy-npm </pre> | <pre lang="sh"> nx generate ngx-deploy-npm:init </pre> |
 
@@ -88,16 +90,18 @@ Independently of the CI/CD that you are using you must create an NPM token. To d
    - Creating a step with `run: npm whoami`
    - The output should be the username of your npm account
 4. **Deploy your package**
+
    - Create a step with:
 
-   | Angular🅰️                                     | Nx🐬                                           |
+   | Angular🅰️                                     | Nx🐬                                          |
    | :-------------------------------------------- | :-------------------------------------------- |
    | <pre lang="sh"> ng deploy your-library </pre> | <pre lang="sh"> nx deploy your-library </pre> |
 
    - **NOTE:** You may want to execute a script that executes some pre-steps
-    before publishing and inside that script execute`ng/nx deploy YOUR_LIBRARY`.
-    If you want to make that script on JavaScript and put it on the package.json,
-    **execute it using `npm` not with yarn**, there is an [issue](https://github.com/yarnpkg/yarn/issues/5683) associated with that
+     before publishing and inside that script execute`ng/nx deploy YOUR_LIBRARY`.
+     If you want to make that script on JavaScript and put it on the package.json,
+     **execute it using `npm` not with yarn**, there is an [issue](https://github.com/yarnpkg/yarn/issues/5683) associated with that
+
 5. **Enjoy your just released package 🎉📦**
 
 The job full example is for an Angular project is
@@ -134,6 +138,7 @@ Same as `ng build --configuration=XXX`.
 This command has no effect if the option `--no-build` option is active.
 
 #### --no-build
+
 - **optional**
 - Default: `false` (string)
 - Example:
