@@ -1,7 +1,7 @@
 {
   "id": "Schema",
   "title": "schema",
-  "description": "Publish your angular packages to npm by just run `ng deploy`",
+  "description": "Publish your libraries to NPM with just one command",
   "properties": {
     "configuration": {
       "type": "string",

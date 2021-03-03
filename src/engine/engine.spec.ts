@@ -153,8 +153,7 @@ describe('engine', () => {
       myPackageJSON = {
         name: 'ngx-deploy-npm',
         version: 'boilerPlate',
-        description:
-          'Publish your angular packages to npm by just run `ng deploy`',
+        description: 'Publish your libraries to NPM with just one command',
         main: 'index.js',
       };
 
