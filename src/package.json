@@ -1,6 +1,6 @@
 {
   "name": "ngx-deploy-npm",
-  "version": "1.5.1",
+  "version": "2.0.0",
   "description": "Publish your libraries to NPM with just one command",
   "main": "index.js",
   "scripts": {

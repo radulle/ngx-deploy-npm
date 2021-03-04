@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.5.1...v2.0.0) (2021-03-04)
+
+### ⚠ BREAKING CHANGES
+
+- change configuration parameter for buildTarget
+  - For migration just change `--configuration` for `--build-target` on the command line and on the configuration file (`angular.json` or `workspace.json`)`configuration` for `buildTarget`.
+  - The easiest way to migrate is to install again the builder through `ng-add`. Be sure to put back again the rest of your configuration because it's going to be overwritten.
+- drop version 8 of @angular-devkit
+  - To migrate should update at least to @angular-devkit v9
+
+### Bug Fixes
+
+- change configuration parameter for buildTarget ([f13bb6b](https://github.com/bikecoders/ngx-deploy-npm/commit/f13bb6b9f7d090fc09519afefa52c7a26e41f154))
+
+### chore
+
+- update peer dependencies for more accurate ones ([9f68296](https://github.com/bikecoders/ngx-deploy-npm/commit/9f68296affc3fd43038483be8239ba6a697a9e62))
+
 ### [1.5.1](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.5.0...v1.5.1) (2021-03-03)
 
 ### Documentation
