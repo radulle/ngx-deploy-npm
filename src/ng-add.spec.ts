@@ -129,7 +129,7 @@ describe('ng-add', () => {
       };
       originalWorkspaceDefinition.projects.publishable.architect!.build.configurations = productionConfig;
       expectedWorkspaceDefinition.projects.publishable.architect!.build.configurations = productionConfig;
-      expectedWorkspaceDefinition.projects.publishable.architect!.deploy.options!.configuration =
+      expectedWorkspaceDefinition.projects.publishable.architect!.deploy.options!.buildTarget =
         'production';
       tree.create('angular.json', JSON.stringify(originalWorkspaceDefinition));
 

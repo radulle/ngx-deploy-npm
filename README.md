@@ -32,7 +32,7 @@
 - [🚀 Continuous Delivery](#continuous-delivery)
   - [CircleCI](#circleci)
 - [📦 Options](#options)
-  - [--configuration](#--configuration)
+  - [--build-target](#--build-target)
   - [--no-build](#--no-build)
   - [--package-version](#--package-version)
   - [--tag](#--tag)
@@ -48,8 +48,10 @@
 
 ---
 
-> Note: all the examples are focused on Angular, if you don't see an
-> explicit command for an Nx workspace just change `ng` for `nx`
+> **Note:** all the examples are focused on Angular, if you don't see an
+> explicit command for an Nx workspace just change `ng` for `nx`.
+>
+> Also, you may find references to `angular.json`, if you are in a Nx workspace you can change it for `workspace.json`
 
 ## 🚀 Quick Start (local development) <a name="quick-start"></a>
 
@@ -124,17 +126,17 @@ jobs:
 
 ## 📦 Options <a name="options"></a>
 
-#### --configuration
+#### --build-target
 
 - **optional**
-- Alias: `-c`
 - Default: Doesn't have any default value (string)
 - Example:
-  - `ng deploy --configuration=production` – The configuration `production` is being used to build your package
+  - `ng deploy --build-target=production` – The configuration `production` is being used to build your package
 
-A named build target, as specified in the `configurations` section of `angular.json`.
-Each named target is accompanied by a configuration of option defaults for that target.
-Same as `ng build --configuration=XXX`.
+The `buildTarget` simply points to an existing build configuration for your project,
+as specified in the `configurations` section of `angular.json`.
+
+This is equivalent to calling the command `ng build --configuration=XXX`.
 This command has no effect if the option `--no-build` option is active.
 
 #### --no-build
@@ -147,7 +149,7 @@ This command has no effect if the option `--no-build` option is active.
 
 Skip build process during deployment.
 This can be used when you are sure that you haven't changed anything and want to deploy with the latest artifact.
-This command causes the `--configuration` setting to have no effect.
+This command causes the `--build-target` setting to have no effect.
 
 #### --package-version
 
@@ -196,13 +198,13 @@ For testing: Run through without making any changes. Execute with --dry-run and 
 ## 📁 Configuration File <a name="configuration-file"></a>
 
 To avoid all these command-line cmd options, you can write down your
-configuration in the `angular.json` or `workspace.json` file in the `options` attribute
+configuration in the `angular.json` file in the `options` attribute
 of your deploy project's architect.
 Just change the kebab-case to lower camel case.
 This is the notation of all options in lower camel case:
 
 - access
-- configuration
+- buildTarget
 - dryRun
 - packageVersion
 - otp
@@ -229,7 +231,7 @@ becomes
 }
 ```
 
-And just run `ng deploy YOUR-LIBRARY` 😄.
+Now you can just run `ng deploy YOUR-LIBRARY` without all the options in the command line! 😄
 
 > ℹ️ You can always use the [--dry-run](#dry-run) option to verify if your configuration is right.
 
