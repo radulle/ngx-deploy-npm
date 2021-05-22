@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/bikecoders/ngx-deploy-npm/compare/v2.0.0...v2.1.0) (2021-05-22)
+
+### Features
+
+- support Angular v12 ([9db179b](https://github.com/bikecoders/ngx-deploy-npm/commit/9db179b136d9a34c09d22a8793cf71409689dee7))
+
 ## [2.0.0](https://github.com/bikecoders/ngx-deploy-npm/compare/v1.5.1...v2.0.0) (2021-03-04)
 
 ### ⚠ BREAKING CHANGES
