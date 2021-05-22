@@ -1,5 +1,5 @@
 {
-  "id": "Schema",
+  "$id": "Schema",
   "title": "schema",
   "description": "Publish your libraries to NPM with just one command",
   "properties": {
