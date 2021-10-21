@@ -38,14 +38,14 @@ describe('install/ng-add generator', () => {
       workspaceConfig = new Map();
 
       expectedSimpleTarget = {
-        executor: '@bikecoders/ngx-deploy-npm:deploy',
+        executor: 'ngx-deploy-npm:deploy',
         options: {
           access: npmAccess.public,
         } as DeployExecutorOptions,
       };
 
       expectedTargetWithProductionMode = {
-        executor: '@bikecoders/ngx-deploy-npm:deploy',
+        executor: 'ngx-deploy-npm:deploy',
         options: {
           buildTarget: 'production',
           access: npmAccess.public,
