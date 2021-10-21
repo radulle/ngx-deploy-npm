@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.0...v3.0.1) (2021-10-21)
+
+
+### Bug Fixes
+
+* set the right executor name ([cbd2f8b](https://github.com/bikecoders/ngx-deploy-npm/commit/cbd2f8bfc03a231c05f43ec4eebf55ea267f698b))
+
 ## [3.0.0](https://github.com/bikecoders/ngx-deploy-npm/compare/v2.1.0...v3.0.0) (2021-10-21)
 
 
