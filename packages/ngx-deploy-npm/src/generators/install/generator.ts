@@ -30,7 +30,7 @@ export default async function install(
       };
 
       libConfig.targets.deploy = {
-        executor: '@bikecoders/ngx-deploy-npm:deploy',
+        executor: 'ngx-deploy-npm:deploy',
         options: executorOptions,
       };
 

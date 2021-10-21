@@ -34,7 +34,7 @@ export const installTest = () => {
 
   it('should modify the workspace for publishable libs', () => {
     const expectedTarget: TargetConfiguration = {
-      executor: '@bikecoders/ngx-deploy-npm:deploy',
+      executor: 'ngx-deploy-npm:deploy',
       options: {
         access: npmAccess.public,
       } as DeployExecutorOptions,
