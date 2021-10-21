@@ -3,198 +3,115 @@
 ## Table of content <!-- omit in toc -->
 
 - [How to start](#how-to-start)
-- [Local development](#local-development)
-  - [1. Angular CLI](#1-angular-cli)
-  - [2. yarn link](#2-yarn-link)
-  - [3. Adding to an Angular project --ng-add](#3-adding-to-an-angular-project---ng-add)
-  - [4. Testing](#4-testing)
-  - [5. Debugging](#5-debugging)
-    - [Option A), the traditional one](#option-a-the-traditional-one)
-    - [Option B), the easy one](#option-b-the-easy-one)
+- [Angular workspace](#angular-workspace)
+- [Debugging on External Workspaces](#debugging-on-external-workspaces)
+  - [Option A), the easy one](#option-a-the-easy-one)
+  - [Option B), the traditional one](#option-b-the-traditional-one)
 - [Making a Contribution](#making-a-contribution)
-- [Creating a Workspace to test your library](#creating-a-workspace-to-test-your-library)
-  - [Nx](#nx)
-  - [Angular](#angular)
+- [E2E test](#e2e-test)
 - [Publish to NPM](#publish-to-npm)
 
 ## How to start
 
-TL;DR – execute this:
+As an essential start, you can start installing the project's dependencies:
 
-```sh
-cd src
-npm i
-npm run build
-npm test
+```bash
+yarn install
 ```
 
-## Local development
+The development process and project architecture are like any other [Nx Plugin](https://nx.dev/l/a/core-concepts/nx-devkit).
 
-If you want to try the latest package locally without installing it from NPM, use the following instructions.
-This may be useful when you want to try the latest non-published version of this library or you want to make a contribution.
+The maintainers recommend having some knowledge about:
 
-Follow the instructions for [checking and updating the Angular CLI version](#angular-cli) and then link the package.
+- [Angular Schematics](https://angular.io/guide/schematics) and,
+- [Nx Plugins][https://nx.dev/l/n/nx-plugin/overview]
 
-### 1. Angular CLI
+Watch this video to know pretty much everything about this plugin development; it's highly recommended.
 
-1. Install the next version of the Angular CLI.
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/fC1-4fAZDP4?start=40&end=182"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; pict
 
-   ```sh
-   npm install -g @angular/cli
+## Angular workspace
+
+To test the functionality on an Angular workspace we need to perform some manual operations
+
+1. Build the project
+
+   ```bash
+   nx build ngx-deploy-npm
    ```
 
-2. Run `ng version`, make sure you have installed Angular CLI v8.3.0 or greater.
+2. Go to the compiled files
 
-3. Update your existing project using the command:
-
-   ```sh
-   ng update @angular/cli @angular/core
-   ```
-
-### 2. yarn link
-
-Use the following instructions to make `ngx-deploy-npm` available locally via `yarn link`.
-
-1. Clone the project
-
-   ```sh
-   git clone git@github.com:bikecoders/ngx-deploy-npm.git
-   cd ngx-deploy-npm
-   ```
-
-2. Install the dependencies
-
-   ```sh
-   cd src
-   yarn install
+   ```bash
+   cd dist/packages/ngx-deploy-npm
    ```
 
 3. Create a local version of the package:
 
-   ```sh
-   yarn run link
-   ```
+   | `yarn link` | `yalc`          |
+   | :---------- | :-------------- |
+   | `yarn link` | `npx yalc link` |
 
-Read more about the `link` feature in the [official NPM documentation](https://docs.npmjs.com/cli/link).
+4. On your [Angular workspace](https://angular.io/cli/new) and:
 
-### 3. Adding to an Angular project --ng-add
+   | `yarn link` (recomended)   | `yalc`                        |
+   | :------------------------- | :---------------------------- |
+   | `yarn link ngx-deploy-npm` | `npx yalc add ngx-deploy-npm` |
 
-Once you have completed the previous steps to `yarn link` the local copy of `ngx-deploy-npm`, follow these steps to use it in a local Angular project.
+## Debugging on External Workspaces
 
-1. Enter the project directory
+There are two ways of debugging:
 
-   ```sh
-   cd your-workspace
-   ```
+#### Option A), the easy one
 
-2. Add the local version of `ngx-deploy-npm`.
-
-   ```sh
-   yarn link ngx-deploy-npm
-   ```
-
-3. Now execute the `ng-add` schematic.
-
-   ```sh
-   ng add ngx-deploy-npm
-   ```
-
-4. You can now publish your library to NPM.
-
-   ```sh
-   ng deploy
-   ```
-
-   Or with the old builder syntax:
-
-   ```sh
-   ng run your-angular-project:deploy
-   ```
-
-5. You can remove the link later by running `npm run unlink`
-
-### 4. Testing
-
-Testing is done with [Jest](https://jestjs.io/).
-To run the tests:
-
-```sh
-cd ./src
-npm run test
-npm run test:cov
-```
-
-### 5. Debugging
-
-There are two ways of debug:
-
-#### Option A), the traditional one
-
-To debug your builder you need to:
-
-1. Place `debugger` statement, where you want your deployer stops.
-2. Follow the steps of [yarn run link](#2-**yarn-link)\*\* described here. compile, link and install linked in a local project
-3. Now, on the project that you linked the deployer, run it on debug mode using:
-   | Normal Command | Command on Debug Mode |
-   | :--------------------- | :------------------------------------------------------------------------ |
-   | `ng deploy` | `node --inspect-brk ./node_modules/@angular/cli/bin/ng deploy` |
-   | `ng add YOUR_DEPLOYER` | `node --inspect-brk ./node_modules/@angular/cli/bin/ng add YOUR_DEPLOYER` |
-
-4. Use your favorite [Inspector Client](https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients) to debug
-
-> This is the standard procedure to debug a NodeJs project. If you need more information you can read the official Docs of NodeJs to learn more about it.
+> ⚡ **Pre Step:** follow the steps of [yarn link](###angular-workspace) as pre step
 >
-> _[https://nodejs.org/de/docs/guides/debugging-getting-started/](https://nodejs.org/de/docs/guides/debugging-getting-started/)_
+> ⚠️ Only works on VsCode!
 
-#### Option B), the easy one
+1. Place `debugger` statement or a red-point where you want your deployer to stop.
+2. Build your project `nx build ngx-deploy-npm`
 
-> Only works on VsCode!
+On VsCode, create a [_JavaScript Debug Terminal_](https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_javascript-debug-terminal) and execute the command that you want to debug
 
-First do:
+#### Option B), the traditional one
 
-1. Place `debugger` statement or a red-point, where you want your deployer stops.
-2. Follow the steps of [yarn link](#2-yarn-link) described here. compile, link and install linked in a local project
+> ⚡ **Pre Step:** follow the steps of [yarn link](###angular-workspace) as pre step
 
-On VsCode, just create a [_JavaScript Debug Terminal_](https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_javascript-debug-terminal) and execute the command that you want to debug
+1. Use your favorite [Inspector Client](https://nodejs.org/de/docs/guides/debugging-getting-started/#inspector-clients) to debug
+
+2. Now, run your command on debug mode using:
+
+   ```bash
+   node --inspect-brk ./node_modules/@nrwl/cli/bin/nx
+   ```
+
+3. Use your favorite Inspector Client to debug
+
+   > This is the standard procedure to debug a NodeJs project. If you need more information, you can read the official Docs of NodeJs to learn more about it.
+   >
+   > [https://nodejs.org/de/docs/guides/debugging-getting-started/](https://nodejs.org/de/docs/guides/debugging-getting-started/)
 
 ## Making a Contribution
 
-1. Verify the issues if your problem or request has been already addressed
+1. Verify the issues. Maybe your problem or request already has been addressed by another member of the community
 2. Fork it
 3. Create your branch
 4. Create your commits using [our guidelines](https://www.conventionalcommits.org/en/v1.0.0/)
-   - This is **very** important, we use the commit history to generate automagically the changelog, do your best describing the changes that you introduce 😄
-   - We encourage the use of unit test for the fixes and new features. You don't know how to write unit test? Don't let that to stop your contribution, we are here to help 👋.
-5. Make a PR against master
+   - We use the commit history to generate the changelog automagically, do your best describing the changes that you introduce 😄. Creating the commit right is essential.
+   - We encourage the use of Unit Tests for the fixes and new features. Don't you know how to write Unit Tests? Don't let that stop your contribution; we are here to help 👋.
+5. Make a PR against `master`
 6. Wait for the review
 7. Merge and Party 🎉
 
-Questions 🤔? Drop your message on our [discord server](https://discord.gg/cPa78y6rXn)
+## E2E test
 
-## Creating a Workspace to test your library
-
-You may want to test your changes in a real life scenario.
-We have some scripts that you can execute to create your workspace
-and test your flaming changes 🔥
-
-> The creation of a new workspace will delete the previous one
-
-### Nx
-
-`yarn run create-workspace:nx` will create a `nx-workspace` folder with a Nx workspace with
-4 publishable libraries to make your test on whatever lib you want
-
-- react-lib
-- angular-lib
-- nest-lib
-- node-lib
-
-### Angular
-
-`yarn run create-workspace:angular` will create a `angular-workspace` folder with an Angular workspace with
-1 publishable libraries to make your test
-
-- angular-lib
+We at this project have E2E tests. They are handy to test production-like scenarios and to have confidence in your changes. This only works for Nx Workspaces, Angular Workspaces need to be tested manually.
 
 ## Publish to NPM
 
