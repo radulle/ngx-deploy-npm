@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/bikecoders/ngx-deploy-npm/compare/v2.1.0...v3.0.0) (2021-10-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* For Nx workspaces, the way to install the tool on Nx Workspaces is `nx generate ngx-deploy-npm:install`.  The generator `init` was migrated to `install`
+
+* migrate to use Nx Devkit ([f0f09e3](https://github.com/bikecoders/ngx-deploy-npm/commit/f0f09e3ea8680c26e8ed6f80d02b7790985995ba))
+
 ## [2.1.0](https://github.com/bikecoders/ngx-deploy-npm/compare/v2.0.0...v2.1.0) (2021-05-22)
 
 ### Features
