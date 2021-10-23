@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.2](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.1...v3.0.2) (2021-10-23)
+
+
+### Bug Fixes
+
+* update nxDevkit to work on Angular Workspaces ([341ced2](https://github.com/bikecoders/ngx-deploy-npm/commit/341ced22c1e55095b40d5b97e4e7d4b34f0d00a3))
+
 ### [3.0.1](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.0...v3.0.1) (2021-10-21)
 
 
