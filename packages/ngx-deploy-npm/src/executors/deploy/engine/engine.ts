@@ -26,7 +26,7 @@ export async function run(dir: string, options: DeployExecutorOptions) {
     }
 
     const npmOptions = extractOnlyNPMOptions(options);
-    const commandToPublish = `npm publish ${dir} ${getOptionsString(
+    const commandToPublish = `npm publish "${dir}" ${getOptionsString(
       npmOptions
     )}`;
 
