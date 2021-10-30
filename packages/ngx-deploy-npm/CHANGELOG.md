@@ -1,6 +1,15 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [3.0.3](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.2...v3.0.3) (2021-10-30)
+
+
+### Bug Fixes
+
+* allow paths with spaces ([#92](https://github.com/bikecoders/ngx-deploy-npm/issues/92)) ([ccc0027](https://github.com/bikecoders/ngx-deploy-npm/commit/ccc0027e99fe3ad924fb4a1f20fe59a030d8ca98))
+
+
 
 ### [3.0.2](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.1...v3.0.2) (2021-10-23)
 
