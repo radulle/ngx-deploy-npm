@@ -1,22 +1,9 @@
-name: Continous Integration
+name: Nightly version Check
 on:
   push:
-    branches-ignore:
-      - 'master'
-    pull_request:
-      branches:
-        - '**'
+    branches:
+      - master
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: ./.github/actions/setup
-
-      - run: npx nx lint
-
   build:
     runs-on: ubuntu-latest
     steps:
