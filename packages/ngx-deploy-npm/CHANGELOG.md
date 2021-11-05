@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.0.5](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.4...v3.0.5) (2021-11-05)
+
+
+### Bug Fixes
+
+* 📦 update dependency @nrwl/devkit to v13.1.3 ([#117](https://github.com/bikecoders/ngx-deploy-npm/issues/117)) ([bb5fd72](https://github.com/bikecoders/ngx-deploy-npm/commit/bb5fd729650849df9d7487b4396e0b34525d5e2e))
+
+
+
 ## [3.0.4](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.3...v3.0.4) (2021-11-03)
 
 
