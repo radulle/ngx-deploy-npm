@@ -2,78 +2,59 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [3.1.0](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.12...v3.1.0) (2022-02-06)
+
+### Features
+
+- create --projects option on install ([#183](https://github.com/bikecoders/ngx-deploy-npm/issues/183)) ([85d6430](https://github.com/bikecoders/ngx-deploy-npm/commit/85d64307e200695aaaffc4aade0256e422956bbd))
+
 ## [3.0.12](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.11...v3.0.12) (2022-01-29)
-
-
 
 ## [3.0.11](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.10...v3.0.11) (2022-01-19)
 
-
-
 ## [3.0.10](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.9...v3.0.10) (2022-01-10)
-
-
 
 ## [3.0.9](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.8...v3.0.9) (2022-01-10)
 
-
-
 ## [3.0.8](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.7...v3.0.8) (2022-01-10)
-
-
 
 ## [3.0.7](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.6...v3.0.7) (2021-12-15)
 
-
-
 ## [3.0.6](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.5...v3.0.6) (2021-12-01)
-
-
 
 ## [3.0.5](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.4...v3.0.5) (2021-11-05)
 
-
 ### Bug Fixes
 
-* 📦 update dependency @nrwl/devkit to v13.1.3 ([#117](https://github.com/bikecoders/ngx-deploy-npm/issues/117)) ([bb5fd72](https://github.com/bikecoders/ngx-deploy-npm/commit/bb5fd729650849df9d7487b4396e0b34525d5e2e))
-
-
+- 📦 update dependency @nrwl/devkit to v13.1.3 ([#117](https://github.com/bikecoders/ngx-deploy-npm/issues/117)) ([bb5fd72](https://github.com/bikecoders/ngx-deploy-npm/commit/bb5fd729650849df9d7487b4396e0b34525d5e2e))
 
 ## [3.0.4](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.3...v3.0.4) (2021-11-03)
 
-
-
 ## [3.0.3](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.2...v3.0.3) (2021-10-30)
-
 
 ### Bug Fixes
 
-* allow paths with spaces ([#92](https://github.com/bikecoders/ngx-deploy-npm/issues/92)) ([ccc0027](https://github.com/bikecoders/ngx-deploy-npm/commit/ccc0027e99fe3ad924fb4a1f20fe59a030d8ca98))
-
-
+- allow paths with spaces ([#92](https://github.com/bikecoders/ngx-deploy-npm/issues/92)) ([ccc0027](https://github.com/bikecoders/ngx-deploy-npm/commit/ccc0027e99fe3ad924fb4a1f20fe59a030d8ca98))
 
 ### [3.0.2](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.1...v3.0.2) (2021-10-23)
 
-
 ### Bug Fixes
 
-* update nxDevkit to work on Angular Workspaces ([341ced2](https://github.com/bikecoders/ngx-deploy-npm/commit/341ced22c1e55095b40d5b97e4e7d4b34f0d00a3))
+- update nxDevkit to work on Angular Workspaces ([341ced2](https://github.com/bikecoders/ngx-deploy-npm/commit/341ced22c1e55095b40d5b97e4e7d4b34f0d00a3))
 
 ### [3.0.1](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.0.0...v3.0.1) (2021-10-21)
 
-
 ### Bug Fixes
 
-* set the right executor name ([cbd2f8b](https://github.com/bikecoders/ngx-deploy-npm/commit/cbd2f8bfc03a231c05f43ec4eebf55ea267f698b))
+- set the right executor name ([cbd2f8b](https://github.com/bikecoders/ngx-deploy-npm/commit/cbd2f8bfc03a231c05f43ec4eebf55ea267f698b))
 
 ## [3.0.0](https://github.com/bikecoders/ngx-deploy-npm/compare/v2.1.0...v3.0.0) (2021-10-21)
 
-
 ### ⚠ BREAKING CHANGES
 
-* For Nx workspaces, the way to install the tool on Nx Workspaces is `nx generate ngx-deploy-npm:install`.  The generator `init` was migrated to `install`
+- For Nx workspaces, the way to install the tool on Nx Workspaces is `nx generate ngx-deploy-npm:install`. The generator `init` was migrated to `install`
 
-* migrate to use Nx Devkit ([f0f09e3](https://github.com/bikecoders/ngx-deploy-npm/commit/f0f09e3ea8680c26e8ed6f80d02b7790985995ba))
+- migrate to use Nx Devkit ([f0f09e3](https://github.com/bikecoders/ngx-deploy-npm/commit/f0f09e3ea8680c26e8ed6f80d02b7790985995ba))
 
 ## [2.1.0](https://github.com/bikecoders/ngx-deploy-npm/compare/v2.0.0...v2.1.0) (2021-05-22)
 
