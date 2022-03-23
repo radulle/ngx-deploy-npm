@@ -2,6 +2,12 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.1.3](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.1.2...v3.1.3) (2022-03-23)
+
+### Bug Fixes
+
+- adapt ng-add/install to new Nx libraries ([#235](https://github.com/bikecoders/ngx-deploy-npm/issues/235)) ([7106648](https://github.com/bikecoders/ngx-deploy-npm/commit/71066482ff4b1a1caa1c577a29ba2c452a4d3778))
+
 ## [3.1.2](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.1.1...v3.1.2) (2022-02-22)
 
 ## [3.1.1](https://github.com/bikecoders/ngx-deploy-npm/compare/v3.1.0...v3.1.1) (2022-02-07)
